@@ -86,12 +86,9 @@ python train_net.py --config_file ../RGBNT201/TOP-ReID.yml
 In order to facilitate users in reproducing the results, we have provided training example. It is important to note that there may be slight variations in the experimental results compared to the data presented in the paper. It is worth noting that our model shows significant improvements on the RGBNT201 dataset. This is partly related to the dataset itself and partly to our choice of learning rate. During the experimental process, to align with the learning rate settings in TransReID, we initially adjust the learning rate to 0.008. However, we find that this task is sensitive to the learning rate. When the learning rate is too low, the model's performance fluctuates significantly. Therefore, for better performance and to enhance the competitiveness of our model, we choose a uniform and more suitable learning rate, ultimately selecting 0.009 as the standardized experimental setting. On the smaller MSVR310 dataset, we follow the authors' recommendations, using a higher number of epochs to improve the model's performance. Please note the above details. Here is the example of training TOP-ReID on RGBNT201 and RGBNT100.
 
 #### RGBNT201:  
-[train.txt](train_RGBNT201.txt)  
-[train.pth](https://pan.baidu.com/s/1YE-24vSo5pv_wHOF-y4sfA)
+[train.txt](train_RGBNT201.txt)
 #### RGBNT100:  
-[train.txt](train_RGBNT100.txt)  
-[train.pth](https://pan.baidu.com/s/1YE-24vSo5pv_wHOF-y4sfA)
-#### code: vmfm
+[train.txt](train_RGBNT100.txt)
 
 ## Citation
 If you find TOP-ReID useful in your research, please consider citing:
