@@ -1,0 +1,1581 @@
+2023-09-05 00:54:41,757 TOPReID INFO: Saving model in the path :/13559197192/wyh/TOPReID/TOP-ReID
+2023-09-05 00:54:41,758 TOPReID INFO: Namespace(config_file='/13559197192/wyh/TOPReID/configs/RGBNT201/TOP-ReID.yml', local_rank=0, opts=[])
+2023-09-05 00:54:41,758 TOPReID INFO: Loaded configuration file /13559197192/wyh/TOPReID/configs/RGBNT201/TOP-ReID.yml
+2023-09-05 00:54:41,758 TOPReID INFO: 
+MODEL:
+  PRETRAIN_CHOICE: 'imagenet'
+  RES_USE: 1
+  TRANS_USE: 1
+  DEPTH: 1
+  MIX_DIM: 768
+  PRETRAIN_PATH_T: '/13559197192/wyh/TOPReID/vitb_16_224_21k.pth'
+  TRANSFORMER_TYPE: 'vit_base_patch16_224'
+  STRIDE_SIZE: [ 16, 16 ]
+  SIE_CAMERA: True
+  RE: 1
+  RE_LAYER: 1
+INPUT:
+  SIZE_TRAIN: [ 256, 128 ]
+  SIZE_TEST: [ 256, 128 ]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.5 # random erasing
+  PADDING: 10
+DATALOADER:
+  SAMPLER: 'softmax_triplet'
+
+DATASETS:
+  NAMES: ('RGBNT201')
+  ROOT_DIR: '/13559197192/wyh/TOPReID/data/'
+
+SOLVER:
+  BASE_LR: 0.009
+  WARMUP_ITERS: 10
+
+TEST:
+  RE_RANKING: 'no'
+  WEIGHT: ''
+  NECK_FEAT: 'before'
+  FEAT_NORM: 'yes'
+  FEAT: 0
+  MISS: "nothing"
+
+OUTPUT_DIR: '/13559197192/wyh/TOPReID/TOP-ReID'
+
+
+2023-09-05 00:54:41,758 TOPReID INFO: Running with config:
+DATALOADER:
+  NUM_INSTANCE: 16
+  NUM_WORKERS: 32
+  SAMPLER: softmax_triplet
+DATASETS:
+  NAMES: RGBNT201
+  ROOT_DIR: /13559197192/wyh/TOPReID/data/
+INPUT:
+  PADDING: 10
+  PIXEL_MEAN: [0.5, 0.5, 0.5]
+  PIXEL_STD: [0.5, 0.5, 0.5]
+  PROB: 0.5
+  RE_PROB: 0.5
+  SIZE_TEST: [256, 128]
+  SIZE_TRAIN: [256, 128]
+MODEL:
+  ATT_DROP_RATE: 0.0
+  BASE: 2
+  CNN_TYPE: ResNet
+  DEPTH: 1
+  DEVICE: cuda
+  DEVICE_ID: 0
+  DIRECT: 0
+  DIST_TRAIN: False
+  DROP_OUT: 0.0
+  DROP_PATH: 0.1
+  ID_LOSS_TYPE: softmax
+  ID_LOSS_WEIGHT: 1.0
+  IF_LABELSMOOTH: on
+  IF_WITH_CENTER: no
+  LAST_STRIDE: 1
+  LAYER: -1
+  MARGIN: 0
+  METRIC_LOSS_TYPE: triplet
+  MIX_DIM: 768
+  MIX_MODE: 0
+  NAME: TOPReID
+  NECK: bnneck
+  NO_MARGIN: True
+  PRETRAIN_CHOICE: imagenet
+  PRETRAIN_PATH_R: /15127306268/wyh/UIS/pth/r50.pth
+  PRETRAIN_PATH_T: /13559197192/wyh/TOPReID/vitb_16_224_21k.pth
+  RE: 1
+  RES_MODE: 1
+  RES_USE: 1
+  RE_LAYER: 1
+  SIE_CAMERA: True
+  SIE_COE: 3.0
+  SIE_VIEW: False
+  STRIDE_SIZE: [16, 16]
+  TRANSFORMER_TYPE: vit_base_patch16_224
+  TRANS_USE: 1
+  TRIPLET_LOSS_WEIGHT: 1.0
+OUTPUT_DIR: /13559197192/wyh/TOPReID/TOP-ReID
+SOLVER:
+  BASE_LR: 0.009
+  BIAS_LR_FACTOR: 2
+  CENTER_LOSS_WEIGHT: 0.0005
+  CENTER_LR: 0.5
+  CHECKPOINT_PERIOD: 60
+  CLUSTER_MARGIN: 0.3
+  COSINE_MARGIN: 0.5
+  COSINE_SCALE: 30
+  EVAL_PERIOD: 1
+  GAMMA: 0.1
+  IMS_PER_BATCH: 128
+  KL: 0
+  LARGE_FC_LR: False
+  LOG_PERIOD: 10
+  MARGIN: 0.3
+  MAX_EPOCHS: 120
+  MOMENTUM: 0.9
+  OPTIMIZER_NAME: SGD
+  RANGE_ALPHA: 0
+  RANGE_BETA: 1
+  RANGE_K: 2
+  RANGE_LOSS_WEIGHT: 1
+  RANGE_MARGIN: 0.3
+  SEED: 1111
+  STEPS: (40, 70)
+  WARMUP_FACTOR: 0.01
+  WARMUP_ITERS: 10
+  WARMUP_METHOD: linear
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_BIAS: 0.0001
+TEST:
+  CROSS: 0
+  CROSS_TYPE: None
+  FEAT: 0
+  FEAT_NORM: yes
+  IMS_PER_BATCH: 256
+  MISS: nothing
+  NECK_FEAT: before
+  RE_RANKING: no
+  WEIGHT: 
+2023-09-05 00:55:00,251 TOPReID.train INFO: start training
+2023-09-05 00:56:03,046 TOPReID.train INFO: Epoch[1] Iteration[10/23] Loss: 33.018, Acc: 0.005, Base Lr: 9.81e-04
+2023-09-05 00:56:10,827 TOPReID.train INFO: Epoch[1] Iteration[20/23] Loss: 30.387, Acc: 0.004, Base Lr: 9.81e-04
+2023-09-05 00:56:16,656 TOPReID.train INFO: Epoch 1 done. Time per batch: 3.143[s] Speed: 40.7[samples/s]
+2023-09-05 00:56:52,341 TOPReID.train INFO: Validation Results - Epoch: 1
+2023-09-05 00:56:52,341 TOPReID.train INFO: mAP: 8.7%
+2023-09-05 00:56:52,341 TOPReID.train INFO: CMC curve, Rank-1  :7.5%
+2023-09-05 00:56:52,341 TOPReID.train INFO: CMC curve, Rank-5  :20.2%
+2023-09-05 00:56:52,341 TOPReID.train INFO: CMC curve, Rank-10 :29.1%
+2023-09-05 00:56:55,558 TOPReID.train INFO: Best mAP: 8.7%
+2023-09-05 00:56:55,558 TOPReID.train INFO: Best Rank-1: 7.5%
+2023-09-05 00:56:55,558 TOPReID.train INFO: Best Rank-5: 20.2%
+2023-09-05 00:56:55,558 TOPReID.train INFO: Best Rank-10: 29.1%
+2023-09-05 00:57:49,528 TOPReID.train INFO: Epoch[2] Iteration[10/23] Loss: 22.002, Acc: 0.255, Base Lr: 1.87e-03
+2023-09-05 00:57:57,243 TOPReID.train INFO: Epoch[2] Iteration[20/23] Loss: 20.498, Acc: 0.182, Base Lr: 1.87e-03
+2023-09-05 00:58:02,848 TOPReID.train INFO: Epoch 2 done. Time per batch: 3.058[s] Speed: 41.9[samples/s]
+2023-09-05 00:58:35,275 TOPReID.train INFO: Validation Results - Epoch: 2
+2023-09-05 00:58:35,275 TOPReID.train INFO: mAP: 12.5%
+2023-09-05 00:58:35,275 TOPReID.train INFO: CMC curve, Rank-1  :9.4%
+2023-09-05 00:58:35,275 TOPReID.train INFO: CMC curve, Rank-5  :22.5%
+2023-09-05 00:58:35,275 TOPReID.train INFO: CMC curve, Rank-10 :33.9%
+2023-09-05 00:58:37,867 TOPReID.train INFO: Best mAP: 12.5%
+2023-09-05 00:58:37,867 TOPReID.train INFO: Best Rank-1: 9.4%
+2023-09-05 00:58:37,867 TOPReID.train INFO: Best Rank-5: 22.5%
+2023-09-05 00:58:37,867 TOPReID.train INFO: Best Rank-10: 33.9%
+2023-09-05 00:59:30,268 TOPReID.train INFO: Epoch[3] Iteration[10/23] Loss: 14.885, Acc: 0.595, Base Lr: 2.76e-03
+2023-09-05 00:59:38,111 TOPReID.train INFO: Epoch[3] Iteration[20/23] Loss: 14.187, Acc: 0.436, Base Lr: 2.76e-03
+2023-09-05 00:59:44,049 TOPReID.train INFO: Epoch 3 done. Time per batch: 2.999[s] Speed: 42.7[samples/s]
+2023-09-05 01:00:16,763 TOPReID.train INFO: Validation Results - Epoch: 3
+2023-09-05 01:00:16,763 TOPReID.train INFO: mAP: 27.5%
+2023-09-05 01:00:16,763 TOPReID.train INFO: CMC curve, Rank-1  :26.6%
+2023-09-05 01:00:16,763 TOPReID.train INFO: CMC curve, Rank-5  :43.1%
+2023-09-05 01:00:16,763 TOPReID.train INFO: CMC curve, Rank-10 :53.5%
+2023-09-05 01:00:19,814 TOPReID.train INFO: Best mAP: 27.5%
+2023-09-05 01:00:19,814 TOPReID.train INFO: Best Rank-1: 26.6%
+2023-09-05 01:00:19,814 TOPReID.train INFO: Best Rank-5: 43.1%
+2023-09-05 01:00:19,814 TOPReID.train INFO: Best Rank-10: 53.5%
+2023-09-05 01:01:09,483 TOPReID.train INFO: Epoch[4] Iteration[10/23] Loss: 10.667, Acc: 0.677, Base Lr: 3.65e-03
+2023-09-05 01:01:17,278 TOPReID.train INFO: Epoch[4] Iteration[20/23] Loss: 10.103, Acc: 0.614, Base Lr: 3.65e-03
+2023-09-05 01:01:22,462 TOPReID.train INFO: Epoch 4 done. Time per batch: 2.838[s] Speed: 45.1[samples/s]
+2023-09-05 01:01:56,815 TOPReID.train INFO: Validation Results - Epoch: 4
+2023-09-05 01:01:56,815 TOPReID.train INFO: mAP: 38.3%
+2023-09-05 01:01:56,815 TOPReID.train INFO: CMC curve, Rank-1  :36.5%
+2023-09-05 01:01:56,815 TOPReID.train INFO: CMC curve, Rank-5  :55.4%
+2023-09-05 01:01:56,815 TOPReID.train INFO: CMC curve, Rank-10 :65.7%
+2023-09-05 01:02:00,872 TOPReID.train INFO: Best mAP: 38.3%
+2023-09-05 01:02:00,872 TOPReID.train INFO: Best Rank-1: 36.5%
+2023-09-05 01:02:00,872 TOPReID.train INFO: Best Rank-5: 55.4%
+2023-09-05 01:02:00,872 TOPReID.train INFO: Best Rank-10: 65.7%
+2023-09-05 01:02:49,631 TOPReID.train INFO: Epoch[5] Iteration[10/23] Loss: 6.551, Acc: 0.864, Base Lr: 4.54e-03
+2023-09-05 01:02:57,363 TOPReID.train INFO: Epoch[5] Iteration[20/23] Loss: 6.554, Acc: 0.821, Base Lr: 4.54e-03
+2023-09-05 01:03:02,660 TOPReID.train INFO: Epoch 5 done. Time per batch: 2.786[s] Speed: 46.0[samples/s]
+2023-09-05 01:03:36,549 TOPReID.train INFO: Validation Results - Epoch: 5
+2023-09-05 01:03:36,549 TOPReID.train INFO: mAP: 46.9%
+2023-09-05 01:03:36,550 TOPReID.train INFO: CMC curve, Rank-1  :48.0%
+2023-09-05 01:03:36,550 TOPReID.train INFO: CMC curve, Rank-5  :63.0%
+2023-09-05 01:03:36,550 TOPReID.train INFO: CMC curve, Rank-10 :72.0%
+2023-09-05 01:03:39,377 TOPReID.train INFO: Best mAP: 46.9%
+2023-09-05 01:03:39,377 TOPReID.train INFO: Best Rank-1: 48.0%
+2023-09-05 01:03:39,377 TOPReID.train INFO: Best Rank-5: 63.0%
+2023-09-05 01:03:39,377 TOPReID.train INFO: Best Rank-10: 72.0%
+2023-09-05 01:04:29,962 TOPReID.train INFO: Epoch[6] Iteration[10/23] Loss: 4.772, Acc: 0.968, Base Lr: 5.44e-03
+2023-09-05 01:04:37,668 TOPReID.train INFO: Epoch[6] Iteration[20/23] Loss: 4.454, Acc: 0.959, Base Lr: 5.44e-03
+2023-09-05 01:04:43,215 TOPReID.train INFO: Epoch 6 done. Time per batch: 2.892[s] Speed: 44.3[samples/s]
+2023-09-05 01:05:19,120 TOPReID.train INFO: Validation Results - Epoch: 6
+2023-09-05 01:05:19,120 TOPReID.train INFO: mAP: 46.5%
+2023-09-05 01:05:19,120 TOPReID.train INFO: CMC curve, Rank-1  :45.1%
+2023-09-05 01:05:19,120 TOPReID.train INFO: CMC curve, Rank-5  :63.3%
+2023-09-05 01:05:19,120 TOPReID.train INFO: CMC curve, Rank-10 :72.1%
+2023-09-05 01:05:19,120 TOPReID.train INFO: Best mAP: 46.9%
+2023-09-05 01:05:19,120 TOPReID.train INFO: Best Rank-1: 48.0%
+2023-09-05 01:05:19,120 TOPReID.train INFO: Best Rank-5: 63.0%
+2023-09-05 01:05:19,120 TOPReID.train INFO: Best Rank-10: 72.0%
+2023-09-05 01:06:06,426 TOPReID.train INFO: Epoch[7] Iteration[10/23] Loss: 3.516, Acc: 0.996, Base Lr: 6.33e-03
+2023-09-05 01:06:14,054 TOPReID.train INFO: Epoch[7] Iteration[20/23] Loss: 3.660, Acc: 0.981, Base Lr: 6.33e-03
+2023-09-05 01:06:19,208 TOPReID.train INFO: Epoch 7 done. Time per batch: 2.721[s] Speed: 47.0[samples/s]
+2023-09-05 01:06:52,697 TOPReID.train INFO: Validation Results - Epoch: 7
+2023-09-05 01:06:52,698 TOPReID.train INFO: mAP: 52.8%
+2023-09-05 01:06:52,698 TOPReID.train INFO: CMC curve, Rank-1  :56.0%
+2023-09-05 01:06:52,698 TOPReID.train INFO: CMC curve, Rank-5  :70.1%
+2023-09-05 01:06:52,698 TOPReID.train INFO: CMC curve, Rank-10 :78.6%
+2023-09-05 01:06:55,424 TOPReID.train INFO: Best mAP: 52.8%
+2023-09-05 01:06:55,424 TOPReID.train INFO: Best Rank-1: 56.0%
+2023-09-05 01:06:55,424 TOPReID.train INFO: Best Rank-5: 70.1%
+2023-09-05 01:06:55,424 TOPReID.train INFO: Best Rank-10: 78.6%
+2023-09-05 01:07:44,465 TOPReID.train INFO: Epoch[8] Iteration[10/23] Loss: 3.219, Acc: 0.987, Base Lr: 7.22e-03
+2023-09-05 01:07:52,126 TOPReID.train INFO: Epoch[8] Iteration[20/23] Loss: 3.246, Acc: 0.983, Base Lr: 7.22e-03
+2023-09-05 01:07:57,331 TOPReID.train INFO: Epoch 8 done. Time per batch: 2.804[s] Speed: 45.7[samples/s]
+2023-09-05 01:08:33,074 TOPReID.train INFO: Validation Results - Epoch: 8
+2023-09-05 01:08:33,074 TOPReID.train INFO: mAP: 58.2%
+2023-09-05 01:08:33,074 TOPReID.train INFO: CMC curve, Rank-1  :58.6%
+2023-09-05 01:08:33,074 TOPReID.train INFO: CMC curve, Rank-5  :74.3%
+2023-09-05 01:08:33,075 TOPReID.train INFO: CMC curve, Rank-10 :82.8%
+2023-09-05 01:08:35,829 TOPReID.train INFO: Best mAP: 58.2%
+2023-09-05 01:08:35,830 TOPReID.train INFO: Best Rank-1: 58.6%
+2023-09-05 01:08:35,830 TOPReID.train INFO: Best Rank-5: 74.3%
+2023-09-05 01:08:35,830 TOPReID.train INFO: Best Rank-10: 82.8%
+2023-09-05 01:09:35,932 TOPReID.train INFO: Epoch[9] Iteration[10/23] Loss: 2.921, Acc: 0.982, Base Lr: 8.11e-03
+2023-09-05 01:09:43,630 TOPReID.train INFO: Epoch[9] Iteration[20/23] Loss: 2.926, Acc: 0.986, Base Lr: 8.11e-03
+2023-09-05 01:09:48,827 TOPReID.train INFO: Epoch 9 done. Time per batch: 3.308[s] Speed: 38.7[samples/s]
+2023-09-05 01:10:22,871 TOPReID.train INFO: Validation Results - Epoch: 9
+2023-09-05 01:10:22,871 TOPReID.train INFO: mAP: 62.0%
+2023-09-05 01:10:22,871 TOPReID.train INFO: CMC curve, Rank-1  :64.5%
+2023-09-05 01:10:22,872 TOPReID.train INFO: CMC curve, Rank-5  :78.9%
+2023-09-05 01:10:22,872 TOPReID.train INFO: CMC curve, Rank-10 :85.2%
+2023-09-05 01:10:25,618 TOPReID.train INFO: Best mAP: 62.0%
+2023-09-05 01:10:25,618 TOPReID.train INFO: Best Rank-1: 64.5%
+2023-09-05 01:10:25,618 TOPReID.train INFO: Best Rank-5: 78.9%
+2023-09-05 01:10:25,618 TOPReID.train INFO: Best Rank-10: 85.2%
+2023-09-05 01:11:12,692 TOPReID.train INFO: Epoch[10] Iteration[10/23] Loss: 2.711, Acc: 0.995, Base Lr: 8.85e-03
+2023-09-05 01:11:20,319 TOPReID.train INFO: Epoch[10] Iteration[20/23] Loss: 2.775, Acc: 0.987, Base Lr: 8.85e-03
+2023-09-05 01:11:25,842 TOPReID.train INFO: Epoch 10 done. Time per batch: 2.728[s] Speed: 46.9[samples/s]
+2023-09-05 01:11:59,570 TOPReID.train INFO: Validation Results - Epoch: 10
+2023-09-05 01:11:59,570 TOPReID.train INFO: mAP: 61.7%
+2023-09-05 01:11:59,570 TOPReID.train INFO: CMC curve, Rank-1  :64.8%
+2023-09-05 01:11:59,570 TOPReID.train INFO: CMC curve, Rank-5  :77.8%
+2023-09-05 01:11:59,570 TOPReID.train INFO: CMC curve, Rank-10 :82.9%
+2023-09-05 01:11:59,570 TOPReID.train INFO: Best mAP: 62.0%
+2023-09-05 01:11:59,570 TOPReID.train INFO: Best Rank-1: 64.5%
+2023-09-05 01:11:59,571 TOPReID.train INFO: Best Rank-5: 78.9%
+2023-09-05 01:11:59,571 TOPReID.train INFO: Best Rank-10: 85.2%
+2023-09-05 01:12:46,251 TOPReID.train INFO: Epoch[11] Iteration[10/23] Loss: 2.801, Acc: 0.979, Base Lr: 8.81e-03
+2023-09-05 01:12:53,866 TOPReID.train INFO: Epoch[11] Iteration[20/23] Loss: 2.717, Acc: 0.987, Base Lr: 8.81e-03
+2023-09-05 01:12:58,924 TOPReID.train INFO: Epoch 11 done. Time per batch: 2.688[s] Speed: 47.6[samples/s]
+2023-09-05 01:13:32,875 TOPReID.train INFO: Validation Results - Epoch: 11
+2023-09-05 01:13:32,876 TOPReID.train INFO: mAP: 62.4%
+2023-09-05 01:13:32,876 TOPReID.train INFO: CMC curve, Rank-1  :65.3%
+2023-09-05 01:13:32,876 TOPReID.train INFO: CMC curve, Rank-5  :77.9%
+2023-09-05 01:13:32,876 TOPReID.train INFO: CMC curve, Rank-10 :83.6%
+2023-09-05 01:13:35,528 TOPReID.train INFO: Best mAP: 62.4%
+2023-09-05 01:13:35,528 TOPReID.train INFO: Best Rank-1: 65.3%
+2023-09-05 01:13:35,528 TOPReID.train INFO: Best Rank-5: 77.9%
+2023-09-05 01:13:35,528 TOPReID.train INFO: Best Rank-10: 83.6%
+2023-09-05 01:14:23,174 TOPReID.train INFO: Epoch[12] Iteration[10/23] Loss: 2.705, Acc: 0.989, Base Lr: 8.78e-03
+2023-09-05 01:14:30,746 TOPReID.train INFO: Epoch[12] Iteration[20/23] Loss: 2.616, Acc: 0.994, Base Lr: 8.78e-03
+2023-09-05 01:14:35,876 TOPReID.train INFO: Epoch 12 done. Time per batch: 2.733[s] Speed: 46.8[samples/s]
+2023-09-05 01:15:09,791 TOPReID.train INFO: Validation Results - Epoch: 12
+2023-09-05 01:15:09,792 TOPReID.train INFO: mAP: 61.5%
+2023-09-05 01:15:09,792 TOPReID.train INFO: CMC curve, Rank-1  :64.6%
+2023-09-05 01:15:09,792 TOPReID.train INFO: CMC curve, Rank-5  :78.1%
+2023-09-05 01:15:09,792 TOPReID.train INFO: CMC curve, Rank-10 :82.5%
+2023-09-05 01:15:09,792 TOPReID.train INFO: Best mAP: 62.4%
+2023-09-05 01:15:09,792 TOPReID.train INFO: Best Rank-1: 65.3%
+2023-09-05 01:15:09,792 TOPReID.train INFO: Best Rank-5: 77.9%
+2023-09-05 01:15:09,792 TOPReID.train INFO: Best Rank-10: 83.6%
+2023-09-05 01:15:56,096 TOPReID.train INFO: Epoch[13] Iteration[10/23] Loss: 2.963, Acc: 0.986, Base Lr: 8.74e-03
+2023-09-05 01:16:03,675 TOPReID.train INFO: Epoch[13] Iteration[20/23] Loss: 2.711, Acc: 0.992, Base Lr: 8.74e-03
+2023-09-05 01:16:08,857 TOPReID.train INFO: Epoch 13 done. Time per batch: 2.675[s] Speed: 47.8[samples/s]
+2023-09-05 01:16:42,933 TOPReID.train INFO: Validation Results - Epoch: 13
+2023-09-05 01:16:42,933 TOPReID.train INFO: mAP: 62.1%
+2023-09-05 01:16:42,934 TOPReID.train INFO: CMC curve, Rank-1  :64.0%
+2023-09-05 01:16:42,934 TOPReID.train INFO: CMC curve, Rank-5  :77.4%
+2023-09-05 01:16:42,934 TOPReID.train INFO: CMC curve, Rank-10 :82.9%
+2023-09-05 01:16:42,934 TOPReID.train INFO: Best mAP: 62.4%
+2023-09-05 01:16:42,934 TOPReID.train INFO: Best Rank-1: 65.3%
+2023-09-05 01:16:42,934 TOPReID.train INFO: Best Rank-5: 77.9%
+2023-09-05 01:16:42,934 TOPReID.train INFO: Best Rank-10: 83.6%
+2023-09-05 01:17:29,700 TOPReID.train INFO: Epoch[14] Iteration[10/23] Loss: 2.548, Acc: 0.987, Base Lr: 8.70e-03
+2023-09-05 01:17:37,234 TOPReID.train INFO: Epoch[14] Iteration[20/23] Loss: 2.588, Acc: 0.988, Base Lr: 8.70e-03
+2023-09-05 01:17:42,427 TOPReID.train INFO: Epoch 14 done. Time per batch: 2.694[s] Speed: 47.5[samples/s]
+2023-09-05 01:18:16,281 TOPReID.train INFO: Validation Results - Epoch: 14
+2023-09-05 01:18:16,281 TOPReID.train INFO: mAP: 64.1%
+2023-09-05 01:18:16,281 TOPReID.train INFO: CMC curve, Rank-1  :66.0%
+2023-09-05 01:18:16,281 TOPReID.train INFO: CMC curve, Rank-5  :78.9%
+2023-09-05 01:18:16,281 TOPReID.train INFO: CMC curve, Rank-10 :84.8%
+2023-09-05 01:18:19,262 TOPReID.train INFO: Best mAP: 64.1%
+2023-09-05 01:18:19,263 TOPReID.train INFO: Best Rank-1: 66.0%
+2023-09-05 01:18:19,263 TOPReID.train INFO: Best Rank-5: 78.9%
+2023-09-05 01:18:19,263 TOPReID.train INFO: Best Rank-10: 84.8%
+2023-09-05 01:19:04,135 TOPReID.train INFO: Epoch[15] Iteration[10/23] Loss: 2.423, Acc: 1.000, Base Lr: 8.66e-03
+2023-09-05 01:19:11,593 TOPReID.train INFO: Epoch[15] Iteration[20/23] Loss: 2.475, Acc: 0.997, Base Lr: 8.66e-03
+2023-09-05 01:19:16,698 TOPReID.train INFO: Epoch 15 done. Time per batch: 2.601[s] Speed: 49.2[samples/s]
+2023-09-05 01:19:51,387 TOPReID.train INFO: Validation Results - Epoch: 15
+2023-09-05 01:19:51,388 TOPReID.train INFO: mAP: 65.6%
+2023-09-05 01:19:51,388 TOPReID.train INFO: CMC curve, Rank-1  :67.5%
+2023-09-05 01:19:51,388 TOPReID.train INFO: CMC curve, Rank-5  :80.6%
+2023-09-05 01:19:51,388 TOPReID.train INFO: CMC curve, Rank-10 :85.8%
+2023-09-05 01:19:54,159 TOPReID.train INFO: Best mAP: 65.6%
+2023-09-05 01:19:54,159 TOPReID.train INFO: Best Rank-1: 67.5%
+2023-09-05 01:19:54,159 TOPReID.train INFO: Best Rank-5: 80.6%
+2023-09-05 01:19:54,159 TOPReID.train INFO: Best Rank-10: 85.8%
+2023-09-05 01:20:40,369 TOPReID.train INFO: Epoch[16] Iteration[10/23] Loss: 2.319, Acc: 0.991, Base Lr: 8.61e-03
+2023-09-05 01:20:47,837 TOPReID.train INFO: Epoch[16] Iteration[20/23] Loss: 2.385, Acc: 0.995, Base Lr: 8.61e-03
+2023-09-05 01:20:53,118 TOPReID.train INFO: Epoch 16 done. Time per batch: 2.670[s] Speed: 47.9[samples/s]
+2023-09-05 01:21:28,821 TOPReID.train INFO: Validation Results - Epoch: 16
+2023-09-05 01:21:28,821 TOPReID.train INFO: mAP: 66.4%
+2023-09-05 01:21:28,821 TOPReID.train INFO: CMC curve, Rank-1  :69.6%
+2023-09-05 01:21:28,821 TOPReID.train INFO: CMC curve, Rank-5  :80.9%
+2023-09-05 01:21:28,821 TOPReID.train INFO: CMC curve, Rank-10 :85.9%
+2023-09-05 01:21:31,399 TOPReID.train INFO: Best mAP: 66.4%
+2023-09-05 01:21:31,399 TOPReID.train INFO: Best Rank-1: 69.6%
+2023-09-05 01:21:31,399 TOPReID.train INFO: Best Rank-5: 80.9%
+2023-09-05 01:21:31,399 TOPReID.train INFO: Best Rank-10: 85.9%
+2023-09-05 01:22:15,603 TOPReID.train INFO: Epoch[17] Iteration[10/23] Loss: 2.318, Acc: 0.998, Base Lr: 8.56e-03
+2023-09-05 01:22:23,063 TOPReID.train INFO: Epoch[17] Iteration[20/23] Loss: 2.311, Acc: 0.998, Base Lr: 8.56e-03
+2023-09-05 01:22:28,315 TOPReID.train INFO: Epoch 17 done. Time per batch: 2.577[s] Speed: 49.7[samples/s]
+2023-09-05 01:22:59,878 TOPReID.train INFO: Validation Results - Epoch: 17
+2023-09-05 01:22:59,878 TOPReID.train INFO: mAP: 65.6%
+2023-09-05 01:22:59,878 TOPReID.train INFO: CMC curve, Rank-1  :68.7%
+2023-09-05 01:22:59,878 TOPReID.train INFO: CMC curve, Rank-5  :81.7%
+2023-09-05 01:22:59,879 TOPReID.train INFO: CMC curve, Rank-10 :85.2%
+2023-09-05 01:22:59,879 TOPReID.train INFO: Best mAP: 66.4%
+2023-09-05 01:22:59,879 TOPReID.train INFO: Best Rank-1: 69.6%
+2023-09-05 01:22:59,879 TOPReID.train INFO: Best Rank-5: 80.9%
+2023-09-05 01:22:59,879 TOPReID.train INFO: Best Rank-10: 85.9%
+2023-09-05 01:23:46,284 TOPReID.train INFO: Epoch[18] Iteration[10/23] Loss: 2.358, Acc: 0.995, Base Lr: 8.51e-03
+2023-09-05 01:23:53,730 TOPReID.train INFO: Epoch[18] Iteration[20/23] Loss: 2.320, Acc: 0.996, Base Lr: 8.51e-03
+2023-09-05 01:23:59,152 TOPReID.train INFO: Epoch 18 done. Time per batch: 2.668[s] Speed: 48.0[samples/s]
+2023-09-05 01:24:31,858 TOPReID.train INFO: Validation Results - Epoch: 18
+2023-09-05 01:24:31,858 TOPReID.train INFO: mAP: 66.9%
+2023-09-05 01:24:31,858 TOPReID.train INFO: CMC curve, Rank-1  :68.8%
+2023-09-05 01:24:31,858 TOPReID.train INFO: CMC curve, Rank-5  :82.9%
+2023-09-05 01:24:31,858 TOPReID.train INFO: CMC curve, Rank-10 :88.0%
+2023-09-05 01:24:34,919 TOPReID.train INFO: Best mAP: 66.9%
+2023-09-05 01:24:34,919 TOPReID.train INFO: Best Rank-1: 68.8%
+2023-09-05 01:24:34,919 TOPReID.train INFO: Best Rank-5: 82.9%
+2023-09-05 01:24:34,919 TOPReID.train INFO: Best Rank-10: 88.0%
+2023-09-05 01:25:27,619 TOPReID.train INFO: Epoch[19] Iteration[10/23] Loss: 2.395, Acc: 1.000, Base Lr: 8.46e-03
+2023-09-05 01:25:35,041 TOPReID.train INFO: Epoch[19] Iteration[20/23] Loss: 2.365, Acc: 1.000, Base Lr: 8.46e-03
+2023-09-05 01:25:40,128 TOPReID.train INFO: Epoch 19 done. Time per batch: 2.954[s] Speed: 43.3[samples/s]
+2023-09-05 01:26:19,236 TOPReID.train INFO: Validation Results - Epoch: 19
+2023-09-05 01:26:19,236 TOPReID.train INFO: mAP: 62.7%
+2023-09-05 01:26:19,236 TOPReID.train INFO: CMC curve, Rank-1  :65.8%
+2023-09-05 01:26:19,236 TOPReID.train INFO: CMC curve, Rank-5  :79.1%
+2023-09-05 01:26:19,236 TOPReID.train INFO: CMC curve, Rank-10 :85.4%
+2023-09-05 01:26:19,236 TOPReID.train INFO: Best mAP: 66.9%
+2023-09-05 01:26:19,236 TOPReID.train INFO: Best Rank-1: 68.8%
+2023-09-05 01:26:19,236 TOPReID.train INFO: Best Rank-5: 82.9%
+2023-09-05 01:26:19,236 TOPReID.train INFO: Best Rank-10: 88.0%
+2023-09-05 01:27:15,240 TOPReID.train INFO: Epoch[20] Iteration[10/23] Loss: 2.198, Acc: 1.000, Base Lr: 8.40e-03
+2023-09-05 01:27:22,690 TOPReID.train INFO: Epoch[20] Iteration[20/23] Loss: 2.265, Acc: 0.994, Base Lr: 8.40e-03
+2023-09-05 01:27:27,814 TOPReID.train INFO: Epoch 20 done. Time per batch: 3.107[s] Speed: 41.2[samples/s]
+2023-09-05 01:28:08,874 TOPReID.train INFO: Validation Results - Epoch: 20
+2023-09-05 01:28:08,875 TOPReID.train INFO: mAP: 68.1%
+2023-09-05 01:28:08,875 TOPReID.train INFO: CMC curve, Rank-1  :72.5%
+2023-09-05 01:28:08,875 TOPReID.train INFO: CMC curve, Rank-5  :84.9%
+2023-09-05 01:28:08,875 TOPReID.train INFO: CMC curve, Rank-10 :89.1%
+2023-09-05 01:28:12,065 TOPReID.train INFO: Best mAP: 68.1%
+2023-09-05 01:28:12,066 TOPReID.train INFO: Best Rank-1: 72.5%
+2023-09-05 01:28:12,066 TOPReID.train INFO: Best Rank-5: 84.9%
+2023-09-05 01:28:12,066 TOPReID.train INFO: Best Rank-10: 89.1%
+2023-09-05 01:29:11,589 TOPReID.train INFO: Epoch[21] Iteration[10/23] Loss: 2.345, Acc: 0.992, Base Lr: 8.34e-03
+2023-09-05 01:29:19,067 TOPReID.train INFO: Epoch[21] Iteration[20/23] Loss: 2.288, Acc: 0.996, Base Lr: 8.34e-03
+2023-09-05 01:29:24,288 TOPReID.train INFO: Epoch 21 done. Time per batch: 3.270[s] Speed: 39.1[samples/s]
+2023-09-05 01:30:20,866 TOPReID.train INFO: Validation Results - Epoch: 21
+2023-09-05 01:30:20,866 TOPReID.train INFO: mAP: 66.9%
+2023-09-05 01:30:20,866 TOPReID.train INFO: CMC curve, Rank-1  :70.3%
+2023-09-05 01:30:20,866 TOPReID.train INFO: CMC curve, Rank-5  :83.6%
+2023-09-05 01:30:20,866 TOPReID.train INFO: CMC curve, Rank-10 :88.8%
+2023-09-05 01:30:20,866 TOPReID.train INFO: Best mAP: 68.1%
+2023-09-05 01:30:20,866 TOPReID.train INFO: Best Rank-1: 72.5%
+2023-09-05 01:30:20,866 TOPReID.train INFO: Best Rank-5: 84.9%
+2023-09-05 01:30:20,867 TOPReID.train INFO: Best Rank-10: 89.1%
+2023-09-05 01:31:22,813 TOPReID.train INFO: Epoch[22] Iteration[10/23] Loss: 2.209, Acc: 1.000, Base Lr: 8.27e-03
+2023-09-05 01:31:30,416 TOPReID.train INFO: Epoch[22] Iteration[20/23] Loss: 2.221, Acc: 0.999, Base Lr: 8.27e-03
+2023-09-05 01:31:35,702 TOPReID.train INFO: Epoch 22 done. Time per batch: 3.390[s] Speed: 37.8[samples/s]
+2023-09-05 01:32:30,269 TOPReID.train INFO: Validation Results - Epoch: 22
+2023-09-05 01:32:30,270 TOPReID.train INFO: mAP: 67.8%
+2023-09-05 01:32:30,270 TOPReID.train INFO: CMC curve, Rank-1  :71.1%
+2023-09-05 01:32:30,270 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 01:32:30,270 TOPReID.train INFO: CMC curve, Rank-10 :89.2%
+2023-09-05 01:32:30,270 TOPReID.train INFO: Best mAP: 68.1%
+2023-09-05 01:32:30,270 TOPReID.train INFO: Best Rank-1: 72.5%
+2023-09-05 01:32:30,270 TOPReID.train INFO: Best Rank-5: 84.9%
+2023-09-05 01:32:30,270 TOPReID.train INFO: Best Rank-10: 89.1%
+2023-09-05 01:33:28,908 TOPReID.train INFO: Epoch[23] Iteration[10/23] Loss: 2.175, Acc: 1.000, Base Lr: 8.21e-03
+2023-09-05 01:33:36,491 TOPReID.train INFO: Epoch[23] Iteration[20/23] Loss: 2.168, Acc: 0.999, Base Lr: 8.21e-03
+2023-09-05 01:33:41,570 TOPReID.train INFO: Epoch 23 done. Time per batch: 3.180[s] Speed: 40.3[samples/s]
+2023-09-05 01:34:28,778 TOPReID.train INFO: Validation Results - Epoch: 23
+2023-09-05 01:34:28,778 TOPReID.train INFO: mAP: 66.9%
+2023-09-05 01:34:28,778 TOPReID.train INFO: CMC curve, Rank-1  :70.7%
+2023-09-05 01:34:28,778 TOPReID.train INFO: CMC curve, Rank-5  :82.1%
+2023-09-05 01:34:28,778 TOPReID.train INFO: CMC curve, Rank-10 :87.1%
+2023-09-05 01:34:28,779 TOPReID.train INFO: Best mAP: 68.1%
+2023-09-05 01:34:28,779 TOPReID.train INFO: Best Rank-1: 72.5%
+2023-09-05 01:34:28,779 TOPReID.train INFO: Best Rank-5: 84.9%
+2023-09-05 01:34:28,779 TOPReID.train INFO: Best Rank-10: 89.1%
+2023-09-05 01:35:31,264 TOPReID.train INFO: Epoch[24] Iteration[10/23] Loss: 2.316, Acc: 0.998, Base Lr: 8.14e-03
+2023-09-05 01:35:38,761 TOPReID.train INFO: Epoch[24] Iteration[20/23] Loss: 2.221, Acc: 0.999, Base Lr: 8.14e-03
+2023-09-05 01:35:43,951 TOPReID.train INFO: Epoch 24 done. Time per batch: 3.405[s] Speed: 37.6[samples/s]
+2023-09-05 01:36:38,861 TOPReID.train INFO: Validation Results - Epoch: 24
+2023-09-05 01:36:38,863 TOPReID.train INFO: mAP: 67.6%
+2023-09-05 01:36:38,863 TOPReID.train INFO: CMC curve, Rank-1  :71.7%
+2023-09-05 01:36:38,863 TOPReID.train INFO: CMC curve, Rank-5  :83.5%
+2023-09-05 01:36:38,863 TOPReID.train INFO: CMC curve, Rank-10 :88.2%
+2023-09-05 01:36:38,863 TOPReID.train INFO: Best mAP: 68.1%
+2023-09-05 01:36:38,863 TOPReID.train INFO: Best Rank-1: 72.5%
+2023-09-05 01:36:38,864 TOPReID.train INFO: Best Rank-5: 84.9%
+2023-09-05 01:36:38,864 TOPReID.train INFO: Best Rank-10: 89.1%
+2023-09-05 01:37:40,379 TOPReID.train INFO: Epoch[25] Iteration[10/23] Loss: 2.115, Acc: 0.999, Base Lr: 8.07e-03
+2023-09-05 01:37:47,859 TOPReID.train INFO: Epoch[25] Iteration[20/23] Loss: 2.158, Acc: 1.000, Base Lr: 8.07e-03
+2023-09-05 01:37:53,050 TOPReID.train INFO: Epoch 25 done. Time per batch: 3.362[s] Speed: 38.1[samples/s]
+2023-09-05 01:38:50,452 TOPReID.train INFO: Validation Results - Epoch: 25
+2023-09-05 01:38:50,453 TOPReID.train INFO: mAP: 66.1%
+2023-09-05 01:38:50,453 TOPReID.train INFO: CMC curve, Rank-1  :69.5%
+2023-09-05 01:38:50,453 TOPReID.train INFO: CMC curve, Rank-5  :82.7%
+2023-09-05 01:38:50,453 TOPReID.train INFO: CMC curve, Rank-10 :88.4%
+2023-09-05 01:38:50,453 TOPReID.train INFO: Best mAP: 68.1%
+2023-09-05 01:38:50,453 TOPReID.train INFO: Best Rank-1: 72.5%
+2023-09-05 01:38:50,453 TOPReID.train INFO: Best Rank-5: 84.9%
+2023-09-05 01:38:50,453 TOPReID.train INFO: Best Rank-10: 89.1%
+2023-09-05 01:39:52,558 TOPReID.train INFO: Epoch[26] Iteration[10/23] Loss: 2.118, Acc: 0.999, Base Lr: 8.00e-03
+2023-09-05 01:40:00,102 TOPReID.train INFO: Epoch[26] Iteration[20/23] Loss: 2.110, Acc: 0.999, Base Lr: 8.00e-03
+2023-09-05 01:40:05,228 TOPReID.train INFO: Epoch 26 done. Time per batch: 3.339[s] Speed: 38.3[samples/s]
+2023-09-05 01:40:50,820 TOPReID.train INFO: Validation Results - Epoch: 26
+2023-09-05 01:40:50,820 TOPReID.train INFO: mAP: 65.7%
+2023-09-05 01:40:50,820 TOPReID.train INFO: CMC curve, Rank-1  :70.2%
+2023-09-05 01:40:50,821 TOPReID.train INFO: CMC curve, Rank-5  :81.9%
+2023-09-05 01:40:50,821 TOPReID.train INFO: CMC curve, Rank-10 :86.7%
+2023-09-05 01:40:50,821 TOPReID.train INFO: Best mAP: 68.1%
+2023-09-05 01:40:50,821 TOPReID.train INFO: Best Rank-1: 72.5%
+2023-09-05 01:40:50,821 TOPReID.train INFO: Best Rank-5: 84.9%
+2023-09-05 01:40:50,821 TOPReID.train INFO: Best Rank-10: 89.1%
+2023-09-05 01:41:51,483 TOPReID.train INFO: Epoch[27] Iteration[10/23] Loss: 2.107, Acc: 1.000, Base Lr: 7.92e-03
+2023-09-05 01:41:58,975 TOPReID.train INFO: Epoch[27] Iteration[20/23] Loss: 2.123, Acc: 1.000, Base Lr: 7.92e-03
+2023-09-05 01:42:04,028 TOPReID.train INFO: Epoch 27 done. Time per batch: 3.302[s] Speed: 38.8[samples/s]
+2023-09-05 01:42:51,968 TOPReID.train INFO: Validation Results - Epoch: 27
+2023-09-05 01:42:51,969 TOPReID.train INFO: mAP: 65.3%
+2023-09-05 01:42:51,969 TOPReID.train INFO: CMC curve, Rank-1  :68.9%
+2023-09-05 01:42:51,969 TOPReID.train INFO: CMC curve, Rank-5  :80.9%
+2023-09-05 01:42:51,969 TOPReID.train INFO: CMC curve, Rank-10 :85.3%
+2023-09-05 01:42:51,969 TOPReID.train INFO: Best mAP: 68.1%
+2023-09-05 01:42:51,969 TOPReID.train INFO: Best Rank-1: 72.5%
+2023-09-05 01:42:51,969 TOPReID.train INFO: Best Rank-5: 84.9%
+2023-09-05 01:42:51,969 TOPReID.train INFO: Best Rank-10: 89.1%
+2023-09-05 01:43:51,508 TOPReID.train INFO: Epoch[28] Iteration[10/23] Loss: 2.077, Acc: 1.000, Base Lr: 7.85e-03
+2023-09-05 01:43:59,000 TOPReID.train INFO: Epoch[28] Iteration[20/23] Loss: 2.085, Acc: 1.000, Base Lr: 7.85e-03
+2023-09-05 01:44:04,085 TOPReID.train INFO: Epoch 28 done. Time per batch: 3.268[s] Speed: 39.2[samples/s]
+2023-09-05 01:44:58,724 TOPReID.train INFO: Validation Results - Epoch: 28
+2023-09-05 01:44:58,725 TOPReID.train INFO: mAP: 65.5%
+2023-09-05 01:44:58,725 TOPReID.train INFO: CMC curve, Rank-1  :68.9%
+2023-09-05 01:44:58,725 TOPReID.train INFO: CMC curve, Rank-5  :81.5%
+2023-09-05 01:44:58,725 TOPReID.train INFO: CMC curve, Rank-10 :85.3%
+2023-09-05 01:44:58,725 TOPReID.train INFO: Best mAP: 68.1%
+2023-09-05 01:44:58,726 TOPReID.train INFO: Best Rank-1: 72.5%
+2023-09-05 01:44:58,726 TOPReID.train INFO: Best Rank-5: 84.9%
+2023-09-05 01:44:58,726 TOPReID.train INFO: Best Rank-10: 89.1%
+2023-09-05 01:46:10,276 TOPReID.train INFO: Epoch[29] Iteration[10/23] Loss: 2.089, Acc: 0.999, Base Lr: 7.77e-03
+2023-09-05 01:46:17,709 TOPReID.train INFO: Epoch[29] Iteration[20/23] Loss: 2.075, Acc: 1.000, Base Lr: 7.77e-03
+2023-09-05 01:46:22,845 TOPReID.train INFO: Epoch 29 done. Time per batch: 3.814[s] Speed: 33.6[samples/s]
+2023-09-05 01:47:05,277 TOPReID.train INFO: Validation Results - Epoch: 29
+2023-09-05 01:47:05,278 TOPReID.train INFO: mAP: 69.7%
+2023-09-05 01:47:05,278 TOPReID.train INFO: CMC curve, Rank-1  :73.2%
+2023-09-05 01:47:05,278 TOPReID.train INFO: CMC curve, Rank-5  :85.3%
+2023-09-05 01:47:05,278 TOPReID.train INFO: CMC curve, Rank-10 :88.4%
+2023-09-05 01:47:08,770 TOPReID.train INFO: Best mAP: 69.7%
+2023-09-05 01:47:08,770 TOPReID.train INFO: Best Rank-1: 73.2%
+2023-09-05 01:47:08,770 TOPReID.train INFO: Best Rank-5: 85.3%
+2023-09-05 01:47:08,770 TOPReID.train INFO: Best Rank-10: 88.4%
+2023-09-05 01:48:13,304 TOPReID.train INFO: Epoch[30] Iteration[10/23] Loss: 2.044, Acc: 1.000, Base Lr: 7.68e-03
+2023-09-05 01:48:20,957 TOPReID.train INFO: Epoch[30] Iteration[20/23] Loss: 2.058, Acc: 1.000, Base Lr: 7.68e-03
+2023-09-05 01:48:26,135 TOPReID.train INFO: Epoch 30 done. Time per batch: 3.507[s] Speed: 36.5[samples/s]
+2023-09-05 01:49:24,388 TOPReID.train INFO: Validation Results - Epoch: 30
+2023-09-05 01:49:24,388 TOPReID.train INFO: mAP: 70.2%
+2023-09-05 01:49:24,388 TOPReID.train INFO: CMC curve, Rank-1  :74.0%
+2023-09-05 01:49:24,388 TOPReID.train INFO: CMC curve, Rank-5  :85.6%
+2023-09-05 01:49:24,388 TOPReID.train INFO: CMC curve, Rank-10 :88.8%
+2023-09-05 01:49:27,500 TOPReID.train INFO: Best mAP: 70.2%
+2023-09-05 01:49:27,500 TOPReID.train INFO: Best Rank-1: 74.0%
+2023-09-05 01:49:27,500 TOPReID.train INFO: Best Rank-5: 85.6%
+2023-09-05 01:49:27,501 TOPReID.train INFO: Best Rank-10: 88.8%
+2023-09-05 01:50:31,007 TOPReID.train INFO: Epoch[31] Iteration[10/23] Loss: 2.090, Acc: 1.000, Base Lr: 7.60e-03
+2023-09-05 01:50:38,539 TOPReID.train INFO: Epoch[31] Iteration[20/23] Loss: 2.062, Acc: 1.000, Base Lr: 7.60e-03
+2023-09-05 01:50:43,667 TOPReID.train INFO: Epoch 31 done. Time per batch: 3.453[s] Speed: 37.1[samples/s]
+2023-09-05 01:51:44,085 TOPReID.train INFO: Validation Results - Epoch: 31
+2023-09-05 01:51:44,086 TOPReID.train INFO: mAP: 69.7%
+2023-09-05 01:51:44,086 TOPReID.train INFO: CMC curve, Rank-1  :71.8%
+2023-09-05 01:51:44,086 TOPReID.train INFO: CMC curve, Rank-5  :85.0%
+2023-09-05 01:51:44,086 TOPReID.train INFO: CMC curve, Rank-10 :88.8%
+2023-09-05 01:51:44,086 TOPReID.train INFO: Best mAP: 70.2%
+2023-09-05 01:51:44,086 TOPReID.train INFO: Best Rank-1: 74.0%
+2023-09-05 01:51:44,087 TOPReID.train INFO: Best Rank-5: 85.6%
+2023-09-05 01:51:44,087 TOPReID.train INFO: Best Rank-10: 88.8%
+2023-09-05 01:52:46,275 TOPReID.train INFO: Epoch[32] Iteration[10/23] Loss: 2.057, Acc: 1.000, Base Lr: 7.51e-03
+2023-09-05 01:52:53,902 TOPReID.train INFO: Epoch[32] Iteration[20/23] Loss: 2.067, Acc: 1.000, Base Lr: 7.51e-03
+2023-09-05 01:52:59,344 TOPReID.train INFO: Epoch 32 done. Time per batch: 3.411[s] Speed: 37.5[samples/s]
+2023-09-05 01:53:59,878 TOPReID.train INFO: Validation Results - Epoch: 32
+2023-09-05 01:53:59,879 TOPReID.train INFO: mAP: 70.1%
+2023-09-05 01:53:59,879 TOPReID.train INFO: CMC curve, Rank-1  :72.4%
+2023-09-05 01:53:59,879 TOPReID.train INFO: CMC curve, Rank-5  :85.0%
+2023-09-05 01:53:59,879 TOPReID.train INFO: CMC curve, Rank-10 :88.5%
+2023-09-05 01:53:59,879 TOPReID.train INFO: Best mAP: 70.2%
+2023-09-05 01:53:59,879 TOPReID.train INFO: Best Rank-1: 74.0%
+2023-09-05 01:53:59,879 TOPReID.train INFO: Best Rank-5: 85.6%
+2023-09-05 01:53:59,879 TOPReID.train INFO: Best Rank-10: 88.8%
+2023-09-05 01:55:03,021 TOPReID.train INFO: Epoch[33] Iteration[10/23] Loss: 2.086, Acc: 1.000, Base Lr: 7.42e-03
+2023-09-05 01:55:10,548 TOPReID.train INFO: Epoch[33] Iteration[20/23] Loss: 2.060, Acc: 1.000, Base Lr: 7.42e-03
+2023-09-05 01:55:15,646 TOPReID.train INFO: Epoch 33 done. Time per batch: 3.422[s] Speed: 37.4[samples/s]
+2023-09-05 01:56:11,423 TOPReID.train INFO: Validation Results - Epoch: 33
+2023-09-05 01:56:11,424 TOPReID.train INFO: mAP: 69.6%
+2023-09-05 01:56:11,424 TOPReID.train INFO: CMC curve, Rank-1  :72.6%
+2023-09-05 01:56:11,424 TOPReID.train INFO: CMC curve, Rank-5  :84.8%
+2023-09-05 01:56:11,424 TOPReID.train INFO: CMC curve, Rank-10 :88.9%
+2023-09-05 01:56:11,424 TOPReID.train INFO: Best mAP: 70.2%
+2023-09-05 01:56:11,425 TOPReID.train INFO: Best Rank-1: 74.0%
+2023-09-05 01:56:11,425 TOPReID.train INFO: Best Rank-5: 85.6%
+2023-09-05 01:56:11,425 TOPReID.train INFO: Best Rank-10: 88.8%
+2023-09-05 01:57:14,686 TOPReID.train INFO: Epoch[34] Iteration[10/23] Loss: 2.031, Acc: 1.000, Base Lr: 7.33e-03
+2023-09-05 01:57:22,172 TOPReID.train INFO: Epoch[34] Iteration[20/23] Loss: 2.031, Acc: 0.999, Base Lr: 7.33e-03
+2023-09-05 01:57:27,498 TOPReID.train INFO: Epoch 34 done. Time per batch: 3.442[s] Speed: 37.2[samples/s]
+2023-09-05 01:58:18,951 TOPReID.train INFO: Validation Results - Epoch: 34
+2023-09-05 01:58:18,952 TOPReID.train INFO: mAP: 68.5%
+2023-09-05 01:58:18,952 TOPReID.train INFO: CMC curve, Rank-1  :72.5%
+2023-09-05 01:58:18,952 TOPReID.train INFO: CMC curve, Rank-5  :84.3%
+2023-09-05 01:58:18,952 TOPReID.train INFO: CMC curve, Rank-10 :88.6%
+2023-09-05 01:58:18,953 TOPReID.train INFO: Best mAP: 70.2%
+2023-09-05 01:58:18,953 TOPReID.train INFO: Best Rank-1: 74.0%
+2023-09-05 01:58:18,953 TOPReID.train INFO: Best Rank-5: 85.6%
+2023-09-05 01:58:18,953 TOPReID.train INFO: Best Rank-10: 88.8%
+2023-09-05 01:59:08,872 TOPReID.train INFO: Epoch[35] Iteration[10/23] Loss: 2.015, Acc: 1.000, Base Lr: 7.24e-03
+2023-09-05 01:59:16,404 TOPReID.train INFO: Epoch[35] Iteration[20/23] Loss: 2.035, Acc: 0.999, Base Lr: 7.24e-03
+2023-09-05 01:59:21,855 TOPReID.train INFO: Epoch 35 done. Time per batch: 2.848[s] Speed: 44.9[samples/s]
+2023-09-05 01:59:56,983 TOPReID.train INFO: Validation Results - Epoch: 35
+2023-09-05 01:59:56,983 TOPReID.train INFO: mAP: 68.0%
+2023-09-05 01:59:56,983 TOPReID.train INFO: CMC curve, Rank-1  :72.1%
+2023-09-05 01:59:56,983 TOPReID.train INFO: CMC curve, Rank-5  :84.3%
+2023-09-05 01:59:56,983 TOPReID.train INFO: CMC curve, Rank-10 :88.5%
+2023-09-05 01:59:56,983 TOPReID.train INFO: Best mAP: 70.2%
+2023-09-05 01:59:56,983 TOPReID.train INFO: Best Rank-1: 74.0%
+2023-09-05 01:59:56,983 TOPReID.train INFO: Best Rank-5: 85.6%
+2023-09-05 01:59:56,983 TOPReID.train INFO: Best Rank-10: 88.8%
+2023-09-05 02:00:47,482 TOPReID.train INFO: Epoch[36] Iteration[10/23] Loss: 2.051, Acc: 1.000, Base Lr: 7.15e-03
+2023-09-05 02:00:55,008 TOPReID.train INFO: Epoch[36] Iteration[20/23] Loss: 2.042, Acc: 1.000, Base Lr: 7.15e-03
+2023-09-05 02:01:00,179 TOPReID.train INFO: Epoch 36 done. Time per batch: 2.863[s] Speed: 44.7[samples/s]
+2023-09-05 02:01:33,061 TOPReID.train INFO: Validation Results - Epoch: 36
+2023-09-05 02:01:33,061 TOPReID.train INFO: mAP: 69.5%
+2023-09-05 02:01:33,061 TOPReID.train INFO: CMC curve, Rank-1  :73.6%
+2023-09-05 02:01:33,062 TOPReID.train INFO: CMC curve, Rank-5  :84.9%
+2023-09-05 02:01:33,062 TOPReID.train INFO: CMC curve, Rank-10 :88.2%
+2023-09-05 02:01:33,062 TOPReID.train INFO: Best mAP: 70.2%
+2023-09-05 02:01:33,062 TOPReID.train INFO: Best Rank-1: 74.0%
+2023-09-05 02:01:33,062 TOPReID.train INFO: Best Rank-5: 85.6%
+2023-09-05 02:01:33,062 TOPReID.train INFO: Best Rank-10: 88.8%
+2023-09-05 02:02:27,228 TOPReID.train INFO: Epoch[37] Iteration[10/23] Loss: 2.011, Acc: 0.998, Base Lr: 7.05e-03
+2023-09-05 02:02:34,814 TOPReID.train INFO: Epoch[37] Iteration[20/23] Loss: 2.010, Acc: 0.999, Base Lr: 7.05e-03
+2023-09-05 02:02:39,839 TOPReID.train INFO: Epoch 37 done. Time per batch: 3.025[s] Speed: 42.3[samples/s]
+2023-09-05 02:03:26,479 TOPReID.train INFO: Validation Results - Epoch: 37
+2023-09-05 02:03:26,479 TOPReID.train INFO: mAP: 71.4%
+2023-09-05 02:03:26,479 TOPReID.train INFO: CMC curve, Rank-1  :75.2%
+2023-09-05 02:03:26,479 TOPReID.train INFO: CMC curve, Rank-5  :85.5%
+2023-09-05 02:03:26,479 TOPReID.train INFO: CMC curve, Rank-10 :89.5%
+2023-09-05 02:03:29,908 TOPReID.train INFO: Best mAP: 71.4%
+2023-09-05 02:03:29,908 TOPReID.train INFO: Best Rank-1: 75.2%
+2023-09-05 02:03:29,908 TOPReID.train INFO: Best Rank-5: 85.5%
+2023-09-05 02:03:29,908 TOPReID.train INFO: Best Rank-10: 89.5%
+2023-09-05 02:04:30,076 TOPReID.train INFO: Epoch[38] Iteration[10/23] Loss: 2.020, Acc: 1.000, Base Lr: 6.95e-03
+2023-09-05 02:04:37,620 TOPReID.train INFO: Epoch[38] Iteration[20/23] Loss: 2.014, Acc: 1.000, Base Lr: 6.95e-03
+2023-09-05 02:04:42,873 TOPReID.train INFO: Epoch 38 done. Time per batch: 3.264[s] Speed: 39.2[samples/s]
+2023-09-05 02:05:26,132 TOPReID.train INFO: Validation Results - Epoch: 38
+2023-09-05 02:05:26,134 TOPReID.train INFO: mAP: 71.4%
+2023-09-05 02:05:26,134 TOPReID.train INFO: CMC curve, Rank-1  :75.5%
+2023-09-05 02:05:26,134 TOPReID.train INFO: CMC curve, Rank-5  :85.3%
+2023-09-05 02:05:26,134 TOPReID.train INFO: CMC curve, Rank-10 :89.4%
+2023-09-05 02:05:26,134 TOPReID.train INFO: Best mAP: 71.4%
+2023-09-05 02:05:26,134 TOPReID.train INFO: Best Rank-1: 75.2%
+2023-09-05 02:05:26,134 TOPReID.train INFO: Best Rank-5: 85.5%
+2023-09-05 02:05:26,134 TOPReID.train INFO: Best Rank-10: 89.5%
+2023-09-05 02:06:27,324 TOPReID.train INFO: Epoch[39] Iteration[10/23] Loss: 1.990, Acc: 1.000, Base Lr: 6.85e-03
+2023-09-05 02:06:34,854 TOPReID.train INFO: Epoch[39] Iteration[20/23] Loss: 1.986, Acc: 1.000, Base Lr: 6.85e-03
+2023-09-05 02:06:39,966 TOPReID.train INFO: Epoch 39 done. Time per batch: 3.346[s] Speed: 38.3[samples/s]
+2023-09-05 02:07:24,633 TOPReID.train INFO: Validation Results - Epoch: 39
+2023-09-05 02:07:24,633 TOPReID.train INFO: mAP: 71.9%
+2023-09-05 02:07:24,633 TOPReID.train INFO: CMC curve, Rank-1  :75.7%
+2023-09-05 02:07:24,633 TOPReID.train INFO: CMC curve, Rank-5  :85.4%
+2023-09-05 02:07:24,634 TOPReID.train INFO: CMC curve, Rank-10 :89.7%
+2023-09-05 02:07:27,961 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:07:27,962 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:07:27,962 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:07:27,962 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:08:33,917 TOPReID.train INFO: Epoch[40] Iteration[10/23] Loss: 1.996, Acc: 1.000, Base Lr: 6.75e-03
+2023-09-05 02:08:41,539 TOPReID.train INFO: Epoch[40] Iteration[20/23] Loss: 2.003, Acc: 1.000, Base Lr: 6.75e-03
+2023-09-05 02:08:46,738 TOPReID.train INFO: Epoch 40 done. Time per batch: 3.571[s] Speed: 35.8[samples/s]
+2023-09-05 02:09:32,131 TOPReID.train INFO: Validation Results - Epoch: 40
+2023-09-05 02:09:32,132 TOPReID.train INFO: mAP: 71.4%
+2023-09-05 02:09:32,132 TOPReID.train INFO: CMC curve, Rank-1  :74.9%
+2023-09-05 02:09:32,132 TOPReID.train INFO: CMC curve, Rank-5  :85.3%
+2023-09-05 02:09:32,132 TOPReID.train INFO: CMC curve, Rank-10 :89.5%
+2023-09-05 02:09:32,132 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:09:32,132 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:09:32,132 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:09:32,132 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:10:33,450 TOPReID.train INFO: Epoch[41] Iteration[10/23] Loss: 2.274, Acc: 1.000, Base Lr: 6.65e-03
+2023-09-05 02:10:40,972 TOPReID.train INFO: Epoch[41] Iteration[20/23] Loss: 2.152, Acc: 1.000, Base Lr: 6.65e-03
+2023-09-05 02:10:46,079 TOPReID.train INFO: Epoch 41 done. Time per batch: 3.351[s] Speed: 38.2[samples/s]
+2023-09-05 02:11:23,681 TOPReID.train INFO: Validation Results - Epoch: 41
+2023-09-05 02:11:23,682 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 02:11:23,682 TOPReID.train INFO: CMC curve, Rank-1  :75.2%
+2023-09-05 02:11:23,682 TOPReID.train INFO: CMC curve, Rank-5  :85.5%
+2023-09-05 02:11:23,682 TOPReID.train INFO: CMC curve, Rank-10 :89.5%
+2023-09-05 02:11:23,682 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:11:23,682 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:11:23,682 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:11:23,682 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:12:16,565 TOPReID.train INFO: Epoch[42] Iteration[10/23] Loss: 2.007, Acc: 1.000, Base Lr: 6.55e-03
+2023-09-05 02:12:24,049 TOPReID.train INFO: Epoch[42] Iteration[20/23] Loss: 2.031, Acc: 1.000, Base Lr: 6.55e-03
+2023-09-05 02:12:29,204 TOPReID.train INFO: Epoch 42 done. Time per batch: 2.968[s] Speed: 43.1[samples/s]
+2023-09-05 02:13:07,255 TOPReID.train INFO: Validation Results - Epoch: 42
+2023-09-05 02:13:07,255 TOPReID.train INFO: mAP: 70.5%
+2023-09-05 02:13:07,255 TOPReID.train INFO: CMC curve, Rank-1  :75.8%
+2023-09-05 02:13:07,255 TOPReID.train INFO: CMC curve, Rank-5  :84.4%
+2023-09-05 02:13:07,255 TOPReID.train INFO: CMC curve, Rank-10 :89.2%
+2023-09-05 02:13:07,255 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:13:07,255 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:13:07,255 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:13:07,256 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:14:02,152 TOPReID.train INFO: Epoch[43] Iteration[10/23] Loss: 1.993, Acc: 1.000, Base Lr: 6.44e-03
+2023-09-05 02:14:09,707 TOPReID.train INFO: Epoch[43] Iteration[20/23] Loss: 1.999, Acc: 1.000, Base Lr: 6.44e-03
+2023-09-05 02:14:14,849 TOPReID.train INFO: Epoch 43 done. Time per batch: 3.063[s] Speed: 41.8[samples/s]
+2023-09-05 02:14:50,073 TOPReID.train INFO: Validation Results - Epoch: 43
+2023-09-05 02:14:50,073 TOPReID.train INFO: mAP: 70.2%
+2023-09-05 02:14:50,073 TOPReID.train INFO: CMC curve, Rank-1  :74.4%
+2023-09-05 02:14:50,073 TOPReID.train INFO: CMC curve, Rank-5  :83.4%
+2023-09-05 02:14:50,073 TOPReID.train INFO: CMC curve, Rank-10 :88.3%
+2023-09-05 02:14:50,073 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:14:50,073 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:14:50,073 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:14:50,073 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:15:42,715 TOPReID.train INFO: Epoch[44] Iteration[10/23] Loss: 2.000, Acc: 1.000, Base Lr: 6.33e-03
+2023-09-05 02:15:50,183 TOPReID.train INFO: Epoch[44] Iteration[20/23] Loss: 1.979, Acc: 1.000, Base Lr: 6.33e-03
+2023-09-05 02:15:54,451 TOPReID.train INFO: Epoch 44 done. Time per batch: 2.993[s] Speed: 42.8[samples/s]
+2023-09-05 02:16:30,743 TOPReID.train INFO: Validation Results - Epoch: 44
+2023-09-05 02:16:30,743 TOPReID.train INFO: mAP: 70.2%
+2023-09-05 02:16:30,743 TOPReID.train INFO: CMC curve, Rank-1  :73.4%
+2023-09-05 02:16:30,743 TOPReID.train INFO: CMC curve, Rank-5  :83.3%
+2023-09-05 02:16:30,743 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 02:16:30,743 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:16:30,743 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:16:30,743 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:16:30,743 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:17:26,279 TOPReID.train INFO: Epoch[45] Iteration[10/23] Loss: 2.026, Acc: 1.000, Base Lr: 6.22e-03
+2023-09-05 02:17:33,837 TOPReID.train INFO: Epoch[45] Iteration[20/23] Loss: 1.999, Acc: 1.000, Base Lr: 6.22e-03
+2023-09-05 02:17:38,993 TOPReID.train INFO: Epoch 45 done. Time per batch: 3.060[s] Speed: 41.8[samples/s]
+2023-09-05 02:18:16,129 TOPReID.train INFO: Validation Results - Epoch: 45
+2023-09-05 02:18:16,129 TOPReID.train INFO: mAP: 69.8%
+2023-09-05 02:18:16,129 TOPReID.train INFO: CMC curve, Rank-1  :73.2%
+2023-09-05 02:18:16,129 TOPReID.train INFO: CMC curve, Rank-5  :82.1%
+2023-09-05 02:18:16,129 TOPReID.train INFO: CMC curve, Rank-10 :87.0%
+2023-09-05 02:18:16,129 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:18:16,129 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:18:16,129 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:18:16,129 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:19:07,047 TOPReID.train INFO: Epoch[46] Iteration[10/23] Loss: 1.958, Acc: 1.000, Base Lr: 6.12e-03
+2023-09-05 02:19:14,517 TOPReID.train INFO: Epoch[46] Iteration[20/23] Loss: 1.959, Acc: 1.000, Base Lr: 6.12e-03
+2023-09-05 02:19:19,587 TOPReID.train INFO: Epoch 46 done. Time per batch: 2.875[s] Speed: 44.5[samples/s]
+2023-09-05 02:20:07,978 TOPReID.train INFO: Validation Results - Epoch: 46
+2023-09-05 02:20:07,978 TOPReID.train INFO: mAP: 70.1%
+2023-09-05 02:20:07,978 TOPReID.train INFO: CMC curve, Rank-1  :74.3%
+2023-09-05 02:20:07,978 TOPReID.train INFO: CMC curve, Rank-5  :81.6%
+2023-09-05 02:20:07,978 TOPReID.train INFO: CMC curve, Rank-10 :87.7%
+2023-09-05 02:20:07,978 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:20:07,978 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:20:07,978 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:20:07,978 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:21:04,907 TOPReID.train INFO: Epoch[47] Iteration[10/23] Loss: 1.984, Acc: 1.000, Base Lr: 6.01e-03
+2023-09-05 02:21:12,391 TOPReID.train INFO: Epoch[47] Iteration[20/23] Loss: 1.975, Acc: 1.000, Base Lr: 6.01e-03
+2023-09-05 02:21:17,488 TOPReID.train INFO: Epoch 47 done. Time per batch: 3.150[s] Speed: 40.6[samples/s]
+2023-09-05 02:21:57,505 TOPReID.train INFO: Validation Results - Epoch: 47
+2023-09-05 02:21:57,506 TOPReID.train INFO: mAP: 70.5%
+2023-09-05 02:21:57,506 TOPReID.train INFO: CMC curve, Rank-1  :74.0%
+2023-09-05 02:21:57,506 TOPReID.train INFO: CMC curve, Rank-5  :83.0%
+2023-09-05 02:21:57,506 TOPReID.train INFO: CMC curve, Rank-10 :87.9%
+2023-09-05 02:21:57,506 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:21:57,506 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:21:57,506 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:21:57,506 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:22:55,516 TOPReID.train INFO: Epoch[48] Iteration[10/23] Loss: 1.944, Acc: 1.000, Base Lr: 5.89e-03
+2023-09-05 02:23:02,991 TOPReID.train INFO: Epoch[48] Iteration[20/23] Loss: 1.969, Acc: 1.000, Base Lr: 5.89e-03
+2023-09-05 02:23:08,264 TOPReID.train INFO: Epoch 48 done. Time per batch: 3.206[s] Speed: 39.9[samples/s]
+2023-09-05 02:23:42,465 TOPReID.train INFO: Validation Results - Epoch: 48
+2023-09-05 02:23:42,465 TOPReID.train INFO: mAP: 71.3%
+2023-09-05 02:23:42,465 TOPReID.train INFO: CMC curve, Rank-1  :74.0%
+2023-09-05 02:23:42,465 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 02:23:42,465 TOPReID.train INFO: CMC curve, Rank-10 :88.8%
+2023-09-05 02:23:42,466 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:23:42,466 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:23:42,466 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:23:42,466 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:24:38,864 TOPReID.train INFO: Epoch[49] Iteration[10/23] Loss: 1.980, Acc: 1.000, Base Lr: 5.78e-03
+2023-09-05 02:24:46,311 TOPReID.train INFO: Epoch[49] Iteration[20/23] Loss: 1.972, Acc: 1.000, Base Lr: 5.78e-03
+2023-09-05 02:24:51,280 TOPReID.train INFO: Epoch 49 done. Time per batch: 3.118[s] Speed: 41.1[samples/s]
+2023-09-05 02:25:25,893 TOPReID.train INFO: Validation Results - Epoch: 49
+2023-09-05 02:25:25,893 TOPReID.train INFO: mAP: 70.2%
+2023-09-05 02:25:25,893 TOPReID.train INFO: CMC curve, Rank-1  :72.8%
+2023-09-05 02:25:25,893 TOPReID.train INFO: CMC curve, Rank-5  :83.0%
+2023-09-05 02:25:25,894 TOPReID.train INFO: CMC curve, Rank-10 :87.9%
+2023-09-05 02:25:25,894 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:25:25,894 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:25:25,894 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:25:25,894 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:26:20,835 TOPReID.train INFO: Epoch[50] Iteration[10/23] Loss: 1.943, Acc: 1.000, Base Lr: 5.67e-03
+2023-09-05 02:26:28,396 TOPReID.train INFO: Epoch[50] Iteration[20/23] Loss: 1.935, Acc: 1.000, Base Lr: 5.67e-03
+2023-09-05 02:26:33,537 TOPReID.train INFO: Epoch 50 done. Time per batch: 3.065[s] Speed: 41.8[samples/s]
+2023-09-05 02:27:13,801 TOPReID.train INFO: Validation Results - Epoch: 50
+2023-09-05 02:27:13,802 TOPReID.train INFO: mAP: 70.2%
+2023-09-05 02:27:13,802 TOPReID.train INFO: CMC curve, Rank-1  :73.6%
+2023-09-05 02:27:13,802 TOPReID.train INFO: CMC curve, Rank-5  :82.5%
+2023-09-05 02:27:13,802 TOPReID.train INFO: CMC curve, Rank-10 :87.6%
+2023-09-05 02:27:13,802 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:27:13,802 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:27:13,803 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:27:13,803 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:28:09,245 TOPReID.train INFO: Epoch[51] Iteration[10/23] Loss: 1.955, Acc: 1.000, Base Lr: 5.55e-03
+2023-09-05 02:28:16,673 TOPReID.train INFO: Epoch[51] Iteration[20/23] Loss: 1.991, Acc: 1.000, Base Lr: 5.55e-03
+2023-09-05 02:28:21,715 TOPReID.train INFO: Epoch 51 done. Time per batch: 3.077[s] Speed: 41.6[samples/s]
+2023-09-05 02:28:59,504 TOPReID.train INFO: Validation Results - Epoch: 51
+2023-09-05 02:28:59,505 TOPReID.train INFO: mAP: 70.5%
+2023-09-05 02:28:59,505 TOPReID.train INFO: CMC curve, Rank-1  :73.7%
+2023-09-05 02:28:59,505 TOPReID.train INFO: CMC curve, Rank-5  :83.5%
+2023-09-05 02:28:59,505 TOPReID.train INFO: CMC curve, Rank-10 :88.9%
+2023-09-05 02:28:59,505 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:28:59,505 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:28:59,505 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:28:59,505 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:29:53,135 TOPReID.train INFO: Epoch[52] Iteration[10/23] Loss: 1.960, Acc: 0.999, Base Lr: 5.44e-03
+2023-09-05 02:30:00,582 TOPReID.train INFO: Epoch[52] Iteration[20/23] Loss: 1.950, Acc: 1.000, Base Lr: 5.44e-03
+2023-09-05 02:30:05,637 TOPReID.train INFO: Epoch 52 done. Time per batch: 2.985[s] Speed: 42.9[samples/s]
+2023-09-05 02:30:43,606 TOPReID.train INFO: Validation Results - Epoch: 52
+2023-09-05 02:30:43,607 TOPReID.train INFO: mAP: 70.1%
+2023-09-05 02:30:43,607 TOPReID.train INFO: CMC curve, Rank-1  :73.2%
+2023-09-05 02:30:43,607 TOPReID.train INFO: CMC curve, Rank-5  :83.3%
+2023-09-05 02:30:43,607 TOPReID.train INFO: CMC curve, Rank-10 :87.4%
+2023-09-05 02:30:43,607 TOPReID.train INFO: Best mAP: 71.9%
+2023-09-05 02:30:43,607 TOPReID.train INFO: Best Rank-1: 75.7%
+2023-09-05 02:30:43,607 TOPReID.train INFO: Best Rank-5: 85.4%
+2023-09-05 02:30:43,607 TOPReID.train INFO: Best Rank-10: 89.7%
+2023-09-05 02:31:40,968 TOPReID.train INFO: Epoch[53] Iteration[10/23] Loss: 1.966, Acc: 0.999, Base Lr: 5.32e-03
+2023-09-05 02:31:48,450 TOPReID.train INFO: Epoch[53] Iteration[20/23] Loss: 1.968, Acc: 1.000, Base Lr: 5.32e-03
+2023-09-05 02:31:53,654 TOPReID.train INFO: Epoch 53 done. Time per batch: 3.174[s] Speed: 40.3[samples/s]
+2023-09-05 02:32:31,198 TOPReID.train INFO: Validation Results - Epoch: 53
+2023-09-05 02:32:31,198 TOPReID.train INFO: mAP: 72.1%
+2023-09-05 02:32:31,198 TOPReID.train INFO: CMC curve, Rank-1  :75.8%
+2023-09-05 02:32:31,198 TOPReID.train INFO: CMC curve, Rank-5  :84.9%
+2023-09-05 02:32:31,199 TOPReID.train INFO: CMC curve, Rank-10 :89.4%
+2023-09-05 02:32:34,015 TOPReID.train INFO: Best mAP: 72.1%
+2023-09-05 02:32:34,015 TOPReID.train INFO: Best Rank-1: 75.8%
+2023-09-05 02:32:34,015 TOPReID.train INFO: Best Rank-5: 84.9%
+2023-09-05 02:32:34,015 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:33:22,751 TOPReID.train INFO: Epoch[54] Iteration[10/23] Loss: 1.948, Acc: 1.000, Base Lr: 5.21e-03
+2023-09-05 02:33:30,178 TOPReID.train INFO: Epoch[54] Iteration[20/23] Loss: 1.955, Acc: 1.000, Base Lr: 5.21e-03
+2023-09-05 02:33:35,204 TOPReID.train INFO: Epoch 54 done. Time per batch: 2.771[s] Speed: 46.2[samples/s]
+2023-09-05 02:34:13,706 TOPReID.train INFO: Validation Results - Epoch: 54
+2023-09-05 02:34:13,706 TOPReID.train INFO: mAP: 72.3%
+2023-09-05 02:34:13,706 TOPReID.train INFO: CMC curve, Rank-1  :76.6%
+2023-09-05 02:34:13,706 TOPReID.train INFO: CMC curve, Rank-5  :84.7%
+2023-09-05 02:34:13,706 TOPReID.train INFO: CMC curve, Rank-10 :89.4%
+2023-09-05 02:34:16,349 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:34:16,349 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:34:16,349 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:34:16,349 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:35:08,516 TOPReID.train INFO: Epoch[55] Iteration[10/23] Loss: 1.926, Acc: 1.000, Base Lr: 5.09e-03
+2023-09-05 02:35:15,962 TOPReID.train INFO: Epoch[55] Iteration[20/23] Loss: 1.969, Acc: 1.000, Base Lr: 5.09e-03
+2023-09-05 02:35:21,139 TOPReID.train INFO: Epoch 55 done. Time per batch: 2.935[s] Speed: 43.6[samples/s]
+2023-09-05 02:35:56,193 TOPReID.train INFO: Validation Results - Epoch: 55
+2023-09-05 02:35:56,193 TOPReID.train INFO: mAP: 70.5%
+2023-09-05 02:35:56,193 TOPReID.train INFO: CMC curve, Rank-1  :73.4%
+2023-09-05 02:35:56,193 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 02:35:56,193 TOPReID.train INFO: CMC curve, Rank-10 :88.5%
+2023-09-05 02:35:56,193 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:35:56,193 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:35:56,193 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:35:56,193 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:36:46,121 TOPReID.train INFO: Epoch[56] Iteration[10/23] Loss: 1.941, Acc: 1.000, Base Lr: 4.97e-03
+2023-09-05 02:36:53,600 TOPReID.train INFO: Epoch[56] Iteration[20/23] Loss: 1.944, Acc: 1.000, Base Lr: 4.97e-03
+2023-09-05 02:36:59,984 TOPReID.train INFO: Epoch 56 done. Time per batch: 2.890[s] Speed: 44.3[samples/s]
+2023-09-05 02:37:34,763 TOPReID.train INFO: Validation Results - Epoch: 56
+2023-09-05 02:37:34,763 TOPReID.train INFO: mAP: 69.2%
+2023-09-05 02:37:34,763 TOPReID.train INFO: CMC curve, Rank-1  :71.5%
+2023-09-05 02:37:34,763 TOPReID.train INFO: CMC curve, Rank-5  :82.3%
+2023-09-05 02:37:34,763 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 02:37:34,763 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:37:34,763 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:37:34,763 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:37:34,763 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:38:23,793 TOPReID.train INFO: Epoch[57] Iteration[10/23] Loss: 1.919, Acc: 1.000, Base Lr: 4.86e-03
+2023-09-05 02:38:31,251 TOPReID.train INFO: Epoch[57] Iteration[20/23] Loss: 1.931, Acc: 1.000, Base Lr: 4.86e-03
+2023-09-05 02:38:36,318 TOPReID.train INFO: Epoch 57 done. Time per batch: 2.788[s] Speed: 45.9[samples/s]
+2023-09-05 02:39:11,831 TOPReID.train INFO: Validation Results - Epoch: 57
+2023-09-05 02:39:11,831 TOPReID.train INFO: mAP: 69.7%
+2023-09-05 02:39:11,831 TOPReID.train INFO: CMC curve, Rank-1  :72.2%
+2023-09-05 02:39:11,831 TOPReID.train INFO: CMC curve, Rank-5  :82.9%
+2023-09-05 02:39:11,831 TOPReID.train INFO: CMC curve, Rank-10 :87.6%
+2023-09-05 02:39:11,831 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:39:11,831 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:39:11,831 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:39:11,831 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:39:59,807 TOPReID.train INFO: Epoch[58] Iteration[10/23] Loss: 1.949, Acc: 0.999, Base Lr: 4.74e-03
+2023-09-05 02:40:07,339 TOPReID.train INFO: Epoch[58] Iteration[20/23] Loss: 1.935, Acc: 1.000, Base Lr: 4.74e-03
+2023-09-05 02:40:12,286 TOPReID.train INFO: Epoch 58 done. Time per batch: 2.738[s] Speed: 46.7[samples/s]
+2023-09-05 02:40:47,476 TOPReID.train INFO: Validation Results - Epoch: 58
+2023-09-05 02:40:47,476 TOPReID.train INFO: mAP: 70.2%
+2023-09-05 02:40:47,476 TOPReID.train INFO: CMC curve, Rank-1  :72.8%
+2023-09-05 02:40:47,476 TOPReID.train INFO: CMC curve, Rank-5  :83.6%
+2023-09-05 02:40:47,477 TOPReID.train INFO: CMC curve, Rank-10 :87.8%
+2023-09-05 02:40:47,477 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:40:47,477 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:40:47,477 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:40:47,477 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:41:37,572 TOPReID.train INFO: Epoch[59] Iteration[10/23] Loss: 1.951, Acc: 1.000, Base Lr: 4.62e-03
+2023-09-05 02:41:45,021 TOPReID.train INFO: Epoch[59] Iteration[20/23] Loss: 1.939, Acc: 1.000, Base Lr: 4.62e-03
+2023-09-05 02:41:50,274 TOPReID.train INFO: Epoch 59 done. Time per batch: 2.845[s] Speed: 45.0[samples/s]
+2023-09-05 02:42:26,669 TOPReID.train INFO: Validation Results - Epoch: 59
+2023-09-05 02:42:26,669 TOPReID.train INFO: mAP: 70.3%
+2023-09-05 02:42:26,669 TOPReID.train INFO: CMC curve, Rank-1  :71.5%
+2023-09-05 02:42:26,669 TOPReID.train INFO: CMC curve, Rank-5  :83.4%
+2023-09-05 02:42:26,669 TOPReID.train INFO: CMC curve, Rank-10 :87.8%
+2023-09-05 02:42:26,669 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:42:26,669 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:42:26,669 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:42:26,669 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:43:13,842 TOPReID.train INFO: Epoch[60] Iteration[10/23] Loss: 1.930, Acc: 1.000, Base Lr: 4.50e-03
+2023-09-05 02:43:21,328 TOPReID.train INFO: Epoch[60] Iteration[20/23] Loss: 1.938, Acc: 1.000, Base Lr: 4.50e-03
+2023-09-05 02:43:26,654 TOPReID.train INFO: Epoch 60 done. Time per batch: 2.717[s] Speed: 47.1[samples/s]
+2023-09-05 02:44:09,002 TOPReID.train INFO: Validation Results - Epoch: 60
+2023-09-05 02:44:09,003 TOPReID.train INFO: mAP: 70.3%
+2023-09-05 02:44:09,003 TOPReID.train INFO: CMC curve, Rank-1  :71.7%
+2023-09-05 02:44:09,003 TOPReID.train INFO: CMC curve, Rank-5  :83.3%
+2023-09-05 02:44:09,003 TOPReID.train INFO: CMC curve, Rank-10 :88.0%
+2023-09-05 02:44:09,003 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:44:09,003 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:44:09,003 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:44:09,003 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:44:54,593 TOPReID.train INFO: Epoch[61] Iteration[10/23] Loss: 1.962, Acc: 1.000, Base Lr: 4.39e-03
+2023-09-05 02:45:02,186 TOPReID.train INFO: Epoch[61] Iteration[20/23] Loss: 1.944, Acc: 1.000, Base Lr: 4.39e-03
+2023-09-05 02:45:07,232 TOPReID.train INFO: Epoch 61 done. Time per batch: 2.619[s] Speed: 48.9[samples/s]
+2023-09-05 02:45:41,173 TOPReID.train INFO: Validation Results - Epoch: 61
+2023-09-05 02:45:41,173 TOPReID.train INFO: mAP: 70.4%
+2023-09-05 02:45:41,174 TOPReID.train INFO: CMC curve, Rank-1  :72.4%
+2023-09-05 02:45:41,174 TOPReID.train INFO: CMC curve, Rank-5  :83.5%
+2023-09-05 02:45:41,174 TOPReID.train INFO: CMC curve, Rank-10 :87.7%
+2023-09-05 02:45:41,174 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:45:41,174 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:45:41,174 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:45:41,174 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:46:27,925 TOPReID.train INFO: Epoch[62] Iteration[10/23] Loss: 1.918, Acc: 1.000, Base Lr: 4.27e-03
+2023-09-05 02:46:35,577 TOPReID.train INFO: Epoch[62] Iteration[20/23] Loss: 1.935, Acc: 1.000, Base Lr: 4.27e-03
+2023-09-05 02:46:40,523 TOPReID.train INFO: Epoch 62 done. Time per batch: 2.688[s] Speed: 47.6[samples/s]
+2023-09-05 02:47:16,688 TOPReID.train INFO: Validation Results - Epoch: 62
+2023-09-05 02:47:16,689 TOPReID.train INFO: mAP: 70.1%
+2023-09-05 02:47:16,689 TOPReID.train INFO: CMC curve, Rank-1  :72.7%
+2023-09-05 02:47:16,689 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 02:47:16,689 TOPReID.train INFO: CMC curve, Rank-10 :87.1%
+2023-09-05 02:47:16,689 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:47:16,689 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:47:16,689 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:47:16,689 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:48:07,918 TOPReID.train INFO: Epoch[63] Iteration[10/23] Loss: 1.921, Acc: 1.000, Base Lr: 4.15e-03
+2023-09-05 02:48:15,540 TOPReID.train INFO: Epoch[63] Iteration[20/23] Loss: 1.929, Acc: 1.000, Base Lr: 4.15e-03
+2023-09-05 02:48:20,817 TOPReID.train INFO: Epoch 63 done. Time per batch: 2.905[s] Speed: 44.1[samples/s]
+2023-09-05 02:48:55,781 TOPReID.train INFO: Validation Results - Epoch: 63
+2023-09-05 02:48:55,781 TOPReID.train INFO: mAP: 69.5%
+2023-09-05 02:48:55,781 TOPReID.train INFO: CMC curve, Rank-1  :71.9%
+2023-09-05 02:48:55,781 TOPReID.train INFO: CMC curve, Rank-5  :83.0%
+2023-09-05 02:48:55,781 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 02:48:55,781 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:48:55,781 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:48:55,781 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:48:55,781 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:49:48,159 TOPReID.train INFO: Epoch[64] Iteration[10/23] Loss: 1.923, Acc: 1.000, Base Lr: 4.03e-03
+2023-09-05 02:49:55,623 TOPReID.train INFO: Epoch[64] Iteration[20/23] Loss: 1.920, Acc: 1.000, Base Lr: 4.03e-03
+2023-09-05 02:50:00,790 TOPReID.train INFO: Epoch 64 done. Time per batch: 2.945[s] Speed: 43.5[samples/s]
+2023-09-05 02:50:37,974 TOPReID.train INFO: Validation Results - Epoch: 64
+2023-09-05 02:50:37,974 TOPReID.train INFO: mAP: 70.8%
+2023-09-05 02:50:37,975 TOPReID.train INFO: CMC curve, Rank-1  :72.8%
+2023-09-05 02:50:37,975 TOPReID.train INFO: CMC curve, Rank-5  :84.0%
+2023-09-05 02:50:37,975 TOPReID.train INFO: CMC curve, Rank-10 :87.8%
+2023-09-05 02:50:37,975 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:50:37,975 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:50:37,975 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:50:37,975 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:51:29,379 TOPReID.train INFO: Epoch[65] Iteration[10/23] Loss: 1.920, Acc: 1.000, Base Lr: 3.92e-03
+2023-09-05 02:51:36,947 TOPReID.train INFO: Epoch[65] Iteration[20/23] Loss: 1.911, Acc: 1.000, Base Lr: 3.92e-03
+2023-09-05 02:51:42,060 TOPReID.train INFO: Epoch 65 done. Time per batch: 2.903[s] Speed: 44.1[samples/s]
+2023-09-05 02:52:19,849 TOPReID.train INFO: Validation Results - Epoch: 65
+2023-09-05 02:52:19,849 TOPReID.train INFO: mAP: 71.4%
+2023-09-05 02:52:19,849 TOPReID.train INFO: CMC curve, Rank-1  :73.9%
+2023-09-05 02:52:19,849 TOPReID.train INFO: CMC curve, Rank-5  :84.6%
+2023-09-05 02:52:19,849 TOPReID.train INFO: CMC curve, Rank-10 :88.2%
+2023-09-05 02:52:19,850 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:52:19,850 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:52:19,850 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:52:19,850 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:53:10,133 TOPReID.train INFO: Epoch[66] Iteration[10/23] Loss: 1.896, Acc: 1.000, Base Lr: 3.80e-03
+2023-09-05 02:53:17,729 TOPReID.train INFO: Epoch[66] Iteration[20/23] Loss: 1.910, Acc: 1.000, Base Lr: 3.80e-03
+2023-09-05 02:53:22,993 TOPReID.train INFO: Epoch 66 done. Time per batch: 2.837[s] Speed: 45.1[samples/s]
+2023-09-05 02:53:59,727 TOPReID.train INFO: Validation Results - Epoch: 66
+2023-09-05 02:53:59,728 TOPReID.train INFO: mAP: 71.6%
+2023-09-05 02:53:59,728 TOPReID.train INFO: CMC curve, Rank-1  :74.0%
+2023-09-05 02:53:59,728 TOPReID.train INFO: CMC curve, Rank-5  :84.6%
+2023-09-05 02:53:59,728 TOPReID.train INFO: CMC curve, Rank-10 :88.6%
+2023-09-05 02:53:59,729 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:53:59,729 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:53:59,729 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:53:59,729 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:54:49,141 TOPReID.train INFO: Epoch[67] Iteration[10/23] Loss: 1.930, Acc: 1.000, Base Lr: 3.69e-03
+2023-09-05 02:54:56,700 TOPReID.train INFO: Epoch[67] Iteration[20/23] Loss: 1.917, Acc: 1.000, Base Lr: 3.69e-03
+2023-09-05 02:55:01,953 TOPReID.train INFO: Epoch 67 done. Time per batch: 2.817[s] Speed: 45.4[samples/s]
+2023-09-05 02:55:38,915 TOPReID.train INFO: Validation Results - Epoch: 67
+2023-09-05 02:55:38,916 TOPReID.train INFO: mAP: 71.0%
+2023-09-05 02:55:38,916 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 02:55:38,916 TOPReID.train INFO: CMC curve, Rank-5  :84.0%
+2023-09-05 02:55:38,916 TOPReID.train INFO: CMC curve, Rank-10 :88.0%
+2023-09-05 02:55:38,916 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:55:38,916 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:55:38,916 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:55:38,916 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:56:32,190 TOPReID.train INFO: Epoch[68] Iteration[10/23] Loss: 1.921, Acc: 1.000, Base Lr: 3.57e-03
+2023-09-05 02:56:39,941 TOPReID.train INFO: Epoch[68] Iteration[20/23] Loss: 1.910, Acc: 1.000, Base Lr: 3.57e-03
+2023-09-05 02:56:46,284 TOPReID.train INFO: Epoch 68 done. Time per batch: 3.053[s] Speed: 41.9[samples/s]
+2023-09-05 02:57:25,555 TOPReID.train INFO: Validation Results - Epoch: 68
+2023-09-05 02:57:25,556 TOPReID.train INFO: mAP: 71.0%
+2023-09-05 02:57:25,556 TOPReID.train INFO: CMC curve, Rank-1  :73.3%
+2023-09-05 02:57:25,556 TOPReID.train INFO: CMC curve, Rank-5  :83.7%
+2023-09-05 02:57:25,556 TOPReID.train INFO: CMC curve, Rank-10 :88.2%
+2023-09-05 02:57:25,556 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:57:25,556 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:57:25,556 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:57:25,556 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:58:14,579 TOPReID.train INFO: Epoch[69] Iteration[10/23] Loss: 1.906, Acc: 1.000, Base Lr: 3.46e-03
+2023-09-05 02:58:22,098 TOPReID.train INFO: Epoch[69] Iteration[20/23] Loss: 1.905, Acc: 1.000, Base Lr: 3.46e-03
+2023-09-05 02:58:27,202 TOPReID.train INFO: Epoch 69 done. Time per batch: 2.792[s] Speed: 45.8[samples/s]
+2023-09-05 02:59:05,186 TOPReID.train INFO: Validation Results - Epoch: 69
+2023-09-05 02:59:05,186 TOPReID.train INFO: mAP: 71.0%
+2023-09-05 02:59:05,186 TOPReID.train INFO: CMC curve, Rank-1  :73.9%
+2023-09-05 02:59:05,186 TOPReID.train INFO: CMC curve, Rank-5  :83.5%
+2023-09-05 02:59:05,186 TOPReID.train INFO: CMC curve, Rank-10 :87.6%
+2023-09-05 02:59:05,186 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 02:59:05,187 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 02:59:05,187 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 02:59:05,187 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 02:59:54,853 TOPReID.train INFO: Epoch[70] Iteration[10/23] Loss: 1.908, Acc: 1.000, Base Lr: 3.34e-03
+2023-09-05 03:00:02,530 TOPReID.train INFO: Epoch[70] Iteration[20/23] Loss: 1.907, Acc: 1.000, Base Lr: 3.34e-03
+2023-09-05 03:00:07,883 TOPReID.train INFO: Epoch 70 done. Time per batch: 2.840[s] Speed: 45.1[samples/s]
+2023-09-05 03:00:44,888 TOPReID.train INFO: Validation Results - Epoch: 70
+2023-09-05 03:00:44,888 TOPReID.train INFO: mAP: 70.6%
+2023-09-05 03:00:44,889 TOPReID.train INFO: CMC curve, Rank-1  :72.8%
+2023-09-05 03:00:44,889 TOPReID.train INFO: CMC curve, Rank-5  :82.9%
+2023-09-05 03:00:44,889 TOPReID.train INFO: CMC curve, Rank-10 :87.6%
+2023-09-05 03:00:44,889 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:00:44,889 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:00:44,889 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:00:44,889 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:01:35,499 TOPReID.train INFO: Epoch[71] Iteration[10/23] Loss: 1.915, Acc: 1.000, Base Lr: 3.23e-03
+2023-09-05 03:01:42,980 TOPReID.train INFO: Epoch[71] Iteration[20/23] Loss: 1.905, Acc: 1.000, Base Lr: 3.23e-03
+2023-09-05 03:01:48,564 TOPReID.train INFO: Epoch 71 done. Time per batch: 2.884[s] Speed: 44.4[samples/s]
+2023-09-05 03:02:27,378 TOPReID.train INFO: Validation Results - Epoch: 71
+2023-09-05 03:02:27,378 TOPReID.train INFO: mAP: 70.6%
+2023-09-05 03:02:27,378 TOPReID.train INFO: CMC curve, Rank-1  :72.7%
+2023-09-05 03:02:27,378 TOPReID.train INFO: CMC curve, Rank-5  :83.4%
+2023-09-05 03:02:27,378 TOPReID.train INFO: CMC curve, Rank-10 :87.6%
+2023-09-05 03:02:27,378 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:02:27,378 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:02:27,378 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:02:27,378 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:03:15,173 TOPReID.train INFO: Epoch[72] Iteration[10/23] Loss: 1.929, Acc: 1.000, Base Lr: 3.12e-03
+2023-09-05 03:03:22,687 TOPReID.train INFO: Epoch[72] Iteration[20/23] Loss: 1.910, Acc: 1.000, Base Lr: 3.12e-03
+2023-09-05 03:03:27,953 TOPReID.train INFO: Epoch 72 done. Time per batch: 2.743[s] Speed: 46.7[samples/s]
+2023-09-05 03:04:05,967 TOPReID.train INFO: Validation Results - Epoch: 72
+2023-09-05 03:04:05,967 TOPReID.train INFO: mAP: 70.7%
+2023-09-05 03:04:05,967 TOPReID.train INFO: CMC curve, Rank-1  :73.0%
+2023-09-05 03:04:05,967 TOPReID.train INFO: CMC curve, Rank-5  :83.7%
+2023-09-05 03:04:05,967 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 03:04:05,967 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:04:05,967 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:04:05,967 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:04:05,967 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:04:55,604 TOPReID.train INFO: Epoch[73] Iteration[10/23] Loss: 1.914, Acc: 1.000, Base Lr: 3.00e-03
+2023-09-05 03:05:03,101 TOPReID.train INFO: Epoch[73] Iteration[20/23] Loss: 1.911, Acc: 1.000, Base Lr: 3.00e-03
+2023-09-05 03:05:08,335 TOPReID.train INFO: Epoch 73 done. Time per batch: 2.825[s] Speed: 45.3[samples/s]
+2023-09-05 03:05:46,035 TOPReID.train INFO: Validation Results - Epoch: 73
+2023-09-05 03:05:46,036 TOPReID.train INFO: mAP: 70.9%
+2023-09-05 03:05:46,036 TOPReID.train INFO: CMC curve, Rank-1  :73.6%
+2023-09-05 03:05:46,036 TOPReID.train INFO: CMC curve, Rank-5  :84.0%
+2023-09-05 03:05:46,036 TOPReID.train INFO: CMC curve, Rank-10 :87.4%
+2023-09-05 03:05:46,036 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:05:46,036 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:05:46,037 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:05:46,037 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:06:38,789 TOPReID.train INFO: Epoch[74] Iteration[10/23] Loss: 1.894, Acc: 1.000, Base Lr: 2.89e-03
+2023-09-05 03:06:46,298 TOPReID.train INFO: Epoch[74] Iteration[20/23] Loss: 1.896, Acc: 1.000, Base Lr: 2.89e-03
+2023-09-05 03:06:51,858 TOPReID.train INFO: Epoch 74 done. Time per batch: 2.982[s] Speed: 42.9[samples/s]
+2023-09-05 03:07:32,130 TOPReID.train INFO: Validation Results - Epoch: 74
+2023-09-05 03:07:32,130 TOPReID.train INFO: mAP: 71.0%
+2023-09-05 03:07:32,130 TOPReID.train INFO: CMC curve, Rank-1  :73.7%
+2023-09-05 03:07:32,130 TOPReID.train INFO: CMC curve, Rank-5  :84.0%
+2023-09-05 03:07:32,130 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 03:07:32,130 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:07:32,130 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:07:32,130 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:07:32,130 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:08:22,132 TOPReID.train INFO: Epoch[75] Iteration[10/23] Loss: 1.913, Acc: 1.000, Base Lr: 2.78e-03
+2023-09-05 03:08:29,876 TOPReID.train INFO: Epoch[75] Iteration[20/23] Loss: 1.905, Acc: 1.000, Base Lr: 2.78e-03
+2023-09-05 03:08:35,348 TOPReID.train INFO: Epoch 75 done. Time per batch: 2.854[s] Speed: 44.9[samples/s]
+2023-09-05 03:09:12,286 TOPReID.train INFO: Validation Results - Epoch: 75
+2023-09-05 03:09:12,286 TOPReID.train INFO: mAP: 71.1%
+2023-09-05 03:09:12,286 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 03:09:12,286 TOPReID.train INFO: CMC curve, Rank-5  :83.7%
+2023-09-05 03:09:12,286 TOPReID.train INFO: CMC curve, Rank-10 :87.6%
+2023-09-05 03:09:12,286 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:09:12,286 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:09:12,286 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:09:12,286 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:09:59,460 TOPReID.train INFO: Epoch[76] Iteration[10/23] Loss: 1.945, Acc: 1.000, Base Lr: 2.68e-03
+2023-09-05 03:10:07,016 TOPReID.train INFO: Epoch[76] Iteration[20/23] Loss: 1.923, Acc: 1.000, Base Lr: 2.68e-03
+2023-09-05 03:10:12,233 TOPReID.train INFO: Epoch 76 done. Time per batch: 2.712[s] Speed: 47.2[samples/s]
+2023-09-05 03:10:53,089 TOPReID.train INFO: Validation Results - Epoch: 76
+2023-09-05 03:10:53,089 TOPReID.train INFO: mAP: 70.1%
+2023-09-05 03:10:53,089 TOPReID.train INFO: CMC curve, Rank-1  :72.4%
+2023-09-05 03:10:53,090 TOPReID.train INFO: CMC curve, Rank-5  :83.1%
+2023-09-05 03:10:53,090 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 03:10:53,090 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:10:53,090 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:10:53,090 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:10:53,090 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:11:46,448 TOPReID.train INFO: Epoch[77] Iteration[10/23] Loss: 1.886, Acc: 1.000, Base Lr: 2.57e-03
+2023-09-05 03:11:54,032 TOPReID.train INFO: Epoch[77] Iteration[20/23] Loss: 1.892, Acc: 1.000, Base Lr: 2.57e-03
+2023-09-05 03:11:59,300 TOPReID.train INFO: Epoch 77 done. Time per batch: 2.998[s] Speed: 42.7[samples/s]
+2023-09-05 03:12:40,901 TOPReID.train INFO: Validation Results - Epoch: 77
+2023-09-05 03:12:40,901 TOPReID.train INFO: mAP: 70.0%
+2023-09-05 03:12:40,901 TOPReID.train INFO: CMC curve, Rank-1  :72.1%
+2023-09-05 03:12:40,901 TOPReID.train INFO: CMC curve, Rank-5  :83.1%
+2023-09-05 03:12:40,901 TOPReID.train INFO: CMC curve, Rank-10 :87.4%
+2023-09-05 03:12:40,901 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:12:40,901 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:12:40,901 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:12:40,902 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:13:31,962 TOPReID.train INFO: Epoch[78] Iteration[10/23] Loss: 1.912, Acc: 1.000, Base Lr: 2.46e-03
+2023-09-05 03:13:39,662 TOPReID.train INFO: Epoch[78] Iteration[20/23] Loss: 1.900, Acc: 1.000, Base Lr: 2.46e-03
+2023-09-05 03:13:45,298 TOPReID.train INFO: Epoch 78 done. Time per batch: 2.917[s] Speed: 43.9[samples/s]
+2023-09-05 03:14:23,490 TOPReID.train INFO: Validation Results - Epoch: 78
+2023-09-05 03:14:23,490 TOPReID.train INFO: mAP: 70.6%
+2023-09-05 03:14:23,490 TOPReID.train INFO: CMC curve, Rank-1  :73.1%
+2023-09-05 03:14:23,490 TOPReID.train INFO: CMC curve, Rank-5  :83.1%
+2023-09-05 03:14:23,490 TOPReID.train INFO: CMC curve, Rank-10 :87.0%
+2023-09-05 03:14:23,490 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:14:23,490 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:14:23,490 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:14:23,491 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:15:10,921 TOPReID.train INFO: Epoch[79] Iteration[10/23] Loss: 1.907, Acc: 1.000, Base Lr: 2.36e-03
+2023-09-05 03:15:18,589 TOPReID.train INFO: Epoch[79] Iteration[20/23] Loss: 1.907, Acc: 1.000, Base Lr: 2.36e-03
+2023-09-05 03:15:23,899 TOPReID.train INFO: Epoch 79 done. Time per batch: 2.736[s] Speed: 46.8[samples/s]
+2023-09-05 03:15:59,245 TOPReID.train INFO: Validation Results - Epoch: 79
+2023-09-05 03:15:59,246 TOPReID.train INFO: mAP: 70.5%
+2023-09-05 03:15:59,246 TOPReID.train INFO: CMC curve, Rank-1  :72.8%
+2023-09-05 03:15:59,246 TOPReID.train INFO: CMC curve, Rank-5  :83.4%
+2023-09-05 03:15:59,246 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 03:15:59,246 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:15:59,246 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:15:59,246 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:15:59,246 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:16:47,739 TOPReID.train INFO: Epoch[80] Iteration[10/23] Loss: 1.900, Acc: 1.000, Base Lr: 2.26e-03
+2023-09-05 03:16:55,370 TOPReID.train INFO: Epoch[80] Iteration[20/23] Loss: 1.894, Acc: 1.000, Base Lr: 2.26e-03
+2023-09-05 03:17:00,602 TOPReID.train INFO: Epoch 80 done. Time per batch: 2.779[s] Speed: 46.1[samples/s]
+2023-09-05 03:17:35,175 TOPReID.train INFO: Validation Results - Epoch: 80
+2023-09-05 03:17:35,175 TOPReID.train INFO: mAP: 70.5%
+2023-09-05 03:17:35,175 TOPReID.train INFO: CMC curve, Rank-1  :73.0%
+2023-09-05 03:17:35,175 TOPReID.train INFO: CMC curve, Rank-5  :83.7%
+2023-09-05 03:17:35,175 TOPReID.train INFO: CMC curve, Rank-10 :86.6%
+2023-09-05 03:17:35,175 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:17:35,175 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:17:35,175 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:17:35,176 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:18:21,785 TOPReID.train INFO: Epoch[81] Iteration[10/23] Loss: 1.887, Acc: 1.000, Base Lr: 2.16e-03
+2023-09-05 03:18:29,468 TOPReID.train INFO: Epoch[81] Iteration[20/23] Loss: 1.898, Acc: 1.000, Base Lr: 2.16e-03
+2023-09-05 03:18:34,895 TOPReID.train INFO: Epoch 81 done. Time per batch: 2.704[s] Speed: 47.3[samples/s]
+2023-09-05 03:19:13,426 TOPReID.train INFO: Validation Results - Epoch: 81
+2023-09-05 03:19:13,426 TOPReID.train INFO: mAP: 70.4%
+2023-09-05 03:19:13,427 TOPReID.train INFO: CMC curve, Rank-1  :73.3%
+2023-09-05 03:19:13,427 TOPReID.train INFO: CMC curve, Rank-5  :83.7%
+2023-09-05 03:19:13,427 TOPReID.train INFO: CMC curve, Rank-10 :87.6%
+2023-09-05 03:19:13,427 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:19:13,427 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:19:13,427 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:19:13,427 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:20:02,678 TOPReID.train INFO: Epoch[82] Iteration[10/23] Loss: 1.880, Acc: 1.000, Base Lr: 2.06e-03
+2023-09-05 03:20:10,312 TOPReID.train INFO: Epoch[82] Iteration[20/23] Loss: 1.888, Acc: 1.000, Base Lr: 2.06e-03
+2023-09-05 03:20:15,764 TOPReID.train INFO: Epoch 82 done. Time per batch: 2.824[s] Speed: 45.3[samples/s]
+2023-09-05 03:20:52,324 TOPReID.train INFO: Validation Results - Epoch: 82
+2023-09-05 03:20:52,325 TOPReID.train INFO: mAP: 70.6%
+2023-09-05 03:20:52,325 TOPReID.train INFO: CMC curve, Rank-1  :73.3%
+2023-09-05 03:20:52,325 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 03:20:52,325 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 03:20:52,325 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:20:52,325 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:20:52,325 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:20:52,325 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:21:39,058 TOPReID.train INFO: Epoch[83] Iteration[10/23] Loss: 1.905, Acc: 1.000, Base Lr: 1.96e-03
+2023-09-05 03:21:46,735 TOPReID.train INFO: Epoch[83] Iteration[20/23] Loss: 1.906, Acc: 0.999, Base Lr: 1.96e-03
+2023-09-05 03:21:52,064 TOPReID.train INFO: Epoch 83 done. Time per batch: 2.706[s] Speed: 47.3[samples/s]
+2023-09-05 03:22:29,101 TOPReID.train INFO: Validation Results - Epoch: 83
+2023-09-05 03:22:29,102 TOPReID.train INFO: mAP: 70.6%
+2023-09-05 03:22:29,102 TOPReID.train INFO: CMC curve, Rank-1  :72.8%
+2023-09-05 03:22:29,102 TOPReID.train INFO: CMC curve, Rank-5  :83.7%
+2023-09-05 03:22:29,102 TOPReID.train INFO: CMC curve, Rank-10 :87.4%
+2023-09-05 03:22:29,102 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:22:29,102 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:22:29,102 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:22:29,102 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:23:16,446 TOPReID.train INFO: Epoch[84] Iteration[10/23] Loss: 1.897, Acc: 1.000, Base Lr: 1.86e-03
+2023-09-05 03:23:24,164 TOPReID.train INFO: Epoch[84] Iteration[20/23] Loss: 1.892, Acc: 1.000, Base Lr: 1.86e-03
+2023-09-05 03:23:29,454 TOPReID.train INFO: Epoch 84 done. Time per batch: 2.724[s] Speed: 47.0[samples/s]
+2023-09-05 03:24:06,802 TOPReID.train INFO: Validation Results - Epoch: 84
+2023-09-05 03:24:06,802 TOPReID.train INFO: mAP: 70.5%
+2023-09-05 03:24:06,802 TOPReID.train INFO: CMC curve, Rank-1  :72.7%
+2023-09-05 03:24:06,802 TOPReID.train INFO: CMC curve, Rank-5  :83.5%
+2023-09-05 03:24:06,802 TOPReID.train INFO: CMC curve, Rank-10 :87.4%
+2023-09-05 03:24:06,802 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:24:06,802 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:24:06,802 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:24:06,802 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:24:54,590 TOPReID.train INFO: Epoch[85] Iteration[10/23] Loss: 1.888, Acc: 1.000, Base Lr: 1.77e-03
+2023-09-05 03:25:02,286 TOPReID.train INFO: Epoch[85] Iteration[20/23] Loss: 1.886, Acc: 1.000, Base Lr: 1.77e-03
+2023-09-05 03:25:07,625 TOPReID.train INFO: Epoch 85 done. Time per batch: 2.739[s] Speed: 46.7[samples/s]
+2023-09-05 03:25:43,362 TOPReID.train INFO: Validation Results - Epoch: 85
+2023-09-05 03:25:43,362 TOPReID.train INFO: mAP: 70.6%
+2023-09-05 03:25:43,362 TOPReID.train INFO: CMC curve, Rank-1  :72.7%
+2023-09-05 03:25:43,362 TOPReID.train INFO: CMC curve, Rank-5  :83.4%
+2023-09-05 03:25:43,362 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 03:25:43,363 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:25:43,363 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:25:43,363 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:25:43,363 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:26:30,338 TOPReID.train INFO: Epoch[86] Iteration[10/23] Loss: 1.889, Acc: 0.999, Base Lr: 1.68e-03
+2023-09-05 03:26:38,089 TOPReID.train INFO: Epoch[86] Iteration[20/23] Loss: 1.889, Acc: 1.000, Base Lr: 1.68e-03
+2023-09-05 03:26:43,537 TOPReID.train INFO: Epoch 86 done. Time per batch: 2.718[s] Speed: 47.1[samples/s]
+2023-09-05 03:27:20,105 TOPReID.train INFO: Validation Results - Epoch: 86
+2023-09-05 03:27:20,105 TOPReID.train INFO: mAP: 70.7%
+2023-09-05 03:27:20,105 TOPReID.train INFO: CMC curve, Rank-1  :73.0%
+2023-09-05 03:27:20,105 TOPReID.train INFO: CMC curve, Rank-5  :83.3%
+2023-09-05 03:27:20,106 TOPReID.train INFO: CMC curve, Rank-10 :87.6%
+2023-09-05 03:27:20,106 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:27:20,106 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:27:20,106 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:27:20,106 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:28:10,639 TOPReID.train INFO: Epoch[87] Iteration[10/23] Loss: 1.886, Acc: 1.000, Base Lr: 1.58e-03
+2023-09-05 03:28:18,336 TOPReID.train INFO: Epoch[87] Iteration[20/23] Loss: 1.886, Acc: 1.000, Base Lr: 1.58e-03
+2023-09-05 03:28:23,754 TOPReID.train INFO: Epoch 87 done. Time per batch: 2.822[s] Speed: 45.4[samples/s]
+2023-09-05 03:28:57,999 TOPReID.train INFO: Validation Results - Epoch: 87
+2023-09-05 03:28:57,999 TOPReID.train INFO: mAP: 70.7%
+2023-09-05 03:28:57,999 TOPReID.train INFO: CMC curve, Rank-1  :73.6%
+2023-09-05 03:28:57,999 TOPReID.train INFO: CMC curve, Rank-5  :83.4%
+2023-09-05 03:28:57,999 TOPReID.train INFO: CMC curve, Rank-10 :87.7%
+2023-09-05 03:28:57,999 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:28:57,999 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:28:57,999 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:28:58,000 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:29:45,861 TOPReID.train INFO: Epoch[88] Iteration[10/23] Loss: 1.885, Acc: 1.000, Base Lr: 1.50e-03
+2023-09-05 03:29:53,596 TOPReID.train INFO: Epoch[88] Iteration[20/23] Loss: 1.887, Acc: 1.000, Base Lr: 1.50e-03
+2023-09-05 03:29:58,950 TOPReID.train INFO: Epoch 88 done. Time per batch: 2.751[s] Speed: 46.5[samples/s]
+2023-09-05 03:30:36,774 TOPReID.train INFO: Validation Results - Epoch: 88
+2023-09-05 03:30:36,775 TOPReID.train INFO: mAP: 70.8%
+2023-09-05 03:30:36,775 TOPReID.train INFO: CMC curve, Rank-1  :73.6%
+2023-09-05 03:30:36,775 TOPReID.train INFO: CMC curve, Rank-5  :83.5%
+2023-09-05 03:30:36,775 TOPReID.train INFO: CMC curve, Rank-10 :87.4%
+2023-09-05 03:30:36,775 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:30:36,775 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:30:36,775 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:30:36,775 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:31:27,001 TOPReID.train INFO: Epoch[89] Iteration[10/23] Loss: 1.886, Acc: 1.000, Base Lr: 1.41e-03
+2023-09-05 03:31:34,801 TOPReID.train INFO: Epoch[89] Iteration[20/23] Loss: 1.889, Acc: 1.000, Base Lr: 1.41e-03
+2023-09-05 03:31:40,210 TOPReID.train INFO: Epoch 89 done. Time per batch: 2.864[s] Speed: 44.7[samples/s]
+2023-09-05 03:32:17,162 TOPReID.train INFO: Validation Results - Epoch: 89
+2023-09-05 03:32:17,163 TOPReID.train INFO: mAP: 70.8%
+2023-09-05 03:32:17,163 TOPReID.train INFO: CMC curve, Rank-1  :73.6%
+2023-09-05 03:32:17,163 TOPReID.train INFO: CMC curve, Rank-5  :83.6%
+2023-09-05 03:32:17,163 TOPReID.train INFO: CMC curve, Rank-10 :87.7%
+2023-09-05 03:32:17,163 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:32:17,163 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:32:17,164 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:32:17,164 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:33:07,027 TOPReID.train INFO: Epoch[90] Iteration[10/23] Loss: 1.893, Acc: 1.000, Base Lr: 1.33e-03
+2023-09-05 03:33:14,867 TOPReID.train INFO: Epoch[90] Iteration[20/23] Loss: 1.890, Acc: 1.000, Base Lr: 1.33e-03
+2023-09-05 03:33:20,345 TOPReID.train INFO: Epoch 90 done. Time per batch: 2.853[s] Speed: 44.9[samples/s]
+2023-09-05 03:33:56,130 TOPReID.train INFO: Validation Results - Epoch: 90
+2023-09-05 03:33:56,130 TOPReID.train INFO: mAP: 71.0%
+2023-09-05 03:33:56,130 TOPReID.train INFO: CMC curve, Rank-1  :73.6%
+2023-09-05 03:33:56,130 TOPReID.train INFO: CMC curve, Rank-5  :83.6%
+2023-09-05 03:33:56,130 TOPReID.train INFO: CMC curve, Rank-10 :87.7%
+2023-09-05 03:33:56,130 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:33:56,130 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:33:56,130 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:33:56,130 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:34:50,321 TOPReID.train INFO: Epoch[91] Iteration[10/23] Loss: 1.885, Acc: 1.000, Base Lr: 1.24e-03
+2023-09-05 03:34:57,983 TOPReID.train INFO: Epoch[91] Iteration[20/23] Loss: 1.893, Acc: 1.000, Base Lr: 1.24e-03
+2023-09-05 03:35:03,567 TOPReID.train INFO: Epoch 91 done. Time per batch: 3.046[s] Speed: 42.0[samples/s]
+2023-09-05 03:35:41,404 TOPReID.train INFO: Validation Results - Epoch: 91
+2023-09-05 03:35:41,404 TOPReID.train INFO: mAP: 71.0%
+2023-09-05 03:35:41,404 TOPReID.train INFO: CMC curve, Rank-1  :73.7%
+2023-09-05 03:35:41,404 TOPReID.train INFO: CMC curve, Rank-5  :83.6%
+2023-09-05 03:35:41,405 TOPReID.train INFO: CMC curve, Rank-10 :87.7%
+2023-09-05 03:35:41,405 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:35:41,405 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:35:41,405 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:35:41,405 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:36:32,632 TOPReID.train INFO: Epoch[92] Iteration[10/23] Loss: 1.897, Acc: 1.000, Base Lr: 1.16e-03
+2023-09-05 03:36:40,278 TOPReID.train INFO: Epoch[92] Iteration[20/23] Loss: 1.897, Acc: 1.000, Base Lr: 1.16e-03
+2023-09-05 03:36:45,738 TOPReID.train INFO: Epoch 92 done. Time per batch: 2.895[s] Speed: 44.2[samples/s]
+2023-09-05 03:37:22,978 TOPReID.train INFO: Validation Results - Epoch: 92
+2023-09-05 03:37:22,979 TOPReID.train INFO: mAP: 70.9%
+2023-09-05 03:37:22,979 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 03:37:22,979 TOPReID.train INFO: CMC curve, Rank-5  :83.5%
+2023-09-05 03:37:22,979 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 03:37:22,979 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:37:22,979 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:37:22,979 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:37:22,979 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:38:13,182 TOPReID.train INFO: Epoch[93] Iteration[10/23] Loss: 1.881, Acc: 1.000, Base Lr: 1.09e-03
+2023-09-05 03:38:21,044 TOPReID.train INFO: Epoch[93] Iteration[20/23] Loss: 1.875, Acc: 1.000, Base Lr: 1.09e-03
+2023-09-05 03:38:26,614 TOPReID.train INFO: Epoch 93 done. Time per batch: 2.872[s] Speed: 44.6[samples/s]
+2023-09-05 03:39:03,368 TOPReID.train INFO: Validation Results - Epoch: 93
+2023-09-05 03:39:03,368 TOPReID.train INFO: mAP: 71.1%
+2023-09-05 03:39:03,368 TOPReID.train INFO: CMC curve, Rank-1  :73.9%
+2023-09-05 03:39:03,368 TOPReID.train INFO: CMC curve, Rank-5  :83.6%
+2023-09-05 03:39:03,368 TOPReID.train INFO: CMC curve, Rank-10 :87.1%
+2023-09-05 03:39:03,368 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:39:03,368 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:39:03,369 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:39:03,369 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:39:51,890 TOPReID.train INFO: Epoch[94] Iteration[10/23] Loss: 1.884, Acc: 0.999, Base Lr: 1.01e-03
+2023-09-05 03:39:59,542 TOPReID.train INFO: Epoch[94] Iteration[20/23] Loss: 1.886, Acc: 1.000, Base Lr: 1.01e-03
+2023-09-05 03:40:05,021 TOPReID.train INFO: Epoch 94 done. Time per batch: 2.782[s] Speed: 46.0[samples/s]
+2023-09-05 03:40:43,291 TOPReID.train INFO: Validation Results - Epoch: 94
+2023-09-05 03:40:43,291 TOPReID.train INFO: mAP: 71.1%
+2023-09-05 03:40:43,291 TOPReID.train INFO: CMC curve, Rank-1  :73.9%
+2023-09-05 03:40:43,291 TOPReID.train INFO: CMC curve, Rank-5  :83.6%
+2023-09-05 03:40:43,291 TOPReID.train INFO: CMC curve, Rank-10 :87.1%
+2023-09-05 03:40:43,291 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:40:43,291 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:40:43,291 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:40:43,291 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:41:35,684 TOPReID.train INFO: Epoch[95] Iteration[10/23] Loss: 1.897, Acc: 1.000, Base Lr: 9.38e-04
+2023-09-05 03:41:43,324 TOPReID.train INFO: Epoch[95] Iteration[20/23] Loss: 1.900, Acc: 1.000, Base Lr: 9.38e-04
+2023-09-05 03:41:48,820 TOPReID.train INFO: Epoch 95 done. Time per batch: 2.958[s] Speed: 43.3[samples/s]
+2023-09-05 03:42:25,192 TOPReID.train INFO: Validation Results - Epoch: 95
+2023-09-05 03:42:25,192 TOPReID.train INFO: mAP: 71.0%
+2023-09-05 03:42:25,192 TOPReID.train INFO: CMC curve, Rank-1  :73.6%
+2023-09-05 03:42:25,192 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 03:42:25,192 TOPReID.train INFO: CMC curve, Rank-10 :87.1%
+2023-09-05 03:42:25,192 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:42:25,192 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:42:25,192 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:42:25,192 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:43:10,991 TOPReID.train INFO: Epoch[96] Iteration[10/23] Loss: 1.887, Acc: 1.000, Base Lr: 8.68e-04
+2023-09-05 03:43:18,495 TOPReID.train INFO: Epoch[96] Iteration[20/23] Loss: 1.876, Acc: 1.000, Base Lr: 8.68e-04
+2023-09-05 03:43:23,579 TOPReID.train INFO: Epoch 96 done. Time per batch: 2.635[s] Speed: 48.6[samples/s]
+2023-09-05 03:43:58,204 TOPReID.train INFO: Validation Results - Epoch: 96
+2023-09-05 03:43:58,204 TOPReID.train INFO: mAP: 70.9%
+2023-09-05 03:43:58,204 TOPReID.train INFO: CMC curve, Rank-1  :73.4%
+2023-09-05 03:43:58,204 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 03:43:58,204 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 03:43:58,204 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:43:58,204 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:43:58,204 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:43:58,204 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:44:44,255 TOPReID.train INFO: Epoch[97] Iteration[10/23] Loss: 1.891, Acc: 1.000, Base Lr: 8.00e-04
+2023-09-05 03:44:51,867 TOPReID.train INFO: Epoch[97] Iteration[20/23] Loss: 1.883, Acc: 1.000, Base Lr: 8.00e-04
+2023-09-05 03:44:56,994 TOPReID.train INFO: Epoch 97 done. Time per batch: 2.652[s] Speed: 48.3[samples/s]
+2023-09-05 03:45:34,602 TOPReID.train INFO: Validation Results - Epoch: 97
+2023-09-05 03:45:34,602 TOPReID.train INFO: mAP: 70.9%
+2023-09-05 03:45:34,602 TOPReID.train INFO: CMC curve, Rank-1  :73.3%
+2023-09-05 03:45:34,602 TOPReID.train INFO: CMC curve, Rank-5  :83.6%
+2023-09-05 03:45:34,602 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 03:45:34,602 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:45:34,602 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:45:34,602 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:45:34,602 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:46:23,275 TOPReID.train INFO: Epoch[98] Iteration[10/23] Loss: 1.914, Acc: 1.000, Base Lr: 7.34e-04
+2023-09-05 03:46:31,038 TOPReID.train INFO: Epoch[98] Iteration[20/23] Loss: 1.899, Acc: 1.000, Base Lr: 7.34e-04
+2023-09-05 03:46:36,695 TOPReID.train INFO: Epoch 98 done. Time per batch: 2.795[s] Speed: 45.8[samples/s]
+2023-09-05 03:47:13,082 TOPReID.train INFO: Validation Results - Epoch: 98
+2023-09-05 03:47:13,083 TOPReID.train INFO: mAP: 70.9%
+2023-09-05 03:47:13,083 TOPReID.train INFO: CMC curve, Rank-1  :73.3%
+2023-09-05 03:47:13,083 TOPReID.train INFO: CMC curve, Rank-5  :83.4%
+2023-09-05 03:47:13,083 TOPReID.train INFO: CMC curve, Rank-10 :86.8%
+2023-09-05 03:47:13,083 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:47:13,083 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:47:13,083 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:47:13,083 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:48:02,005 TOPReID.train INFO: Epoch[99] Iteration[10/23] Loss: 1.893, Acc: 1.000, Base Lr: 6.71e-04
+2023-09-05 03:48:09,659 TOPReID.train INFO: Epoch[99] Iteration[20/23] Loss: 1.895, Acc: 1.000, Base Lr: 6.71e-04
+2023-09-05 03:48:14,948 TOPReID.train INFO: Epoch 99 done. Time per batch: 2.779[s] Speed: 46.1[samples/s]
+2023-09-05 03:48:50,095 TOPReID.train INFO: Validation Results - Epoch: 99
+2023-09-05 03:48:50,096 TOPReID.train INFO: mAP: 71.1%
+2023-09-05 03:48:50,096 TOPReID.train INFO: CMC curve, Rank-1  :73.1%
+2023-09-05 03:48:50,096 TOPReID.train INFO: CMC curve, Rank-5  :83.7%
+2023-09-05 03:48:50,096 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 03:48:50,096 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:48:50,096 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:48:50,096 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:48:50,096 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:49:37,872 TOPReID.train INFO: Epoch[100] Iteration[10/23] Loss: 1.894, Acc: 1.000, Base Lr: 6.11e-04
+2023-09-05 03:49:45,581 TOPReID.train INFO: Epoch[100] Iteration[20/23] Loss: 1.889, Acc: 1.000, Base Lr: 6.11e-04
+2023-09-05 03:49:50,884 TOPReID.train INFO: Epoch 100 done. Time per batch: 2.654[s] Speed: 48.2[samples/s]
+2023-09-05 03:50:25,182 TOPReID.train INFO: Validation Results - Epoch: 100
+2023-09-05 03:50:25,183 TOPReID.train INFO: mAP: 71.1%
+2023-09-05 03:50:25,183 TOPReID.train INFO: CMC curve, Rank-1  :73.6%
+2023-09-05 03:50:25,183 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 03:50:25,183 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 03:50:25,183 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:50:25,183 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:50:25,183 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:50:25,183 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:51:11,931 TOPReID.train INFO: Epoch[101] Iteration[10/23] Loss: 1.891, Acc: 1.000, Base Lr: 5.54e-04
+2023-09-05 03:51:19,675 TOPReID.train INFO: Epoch[101] Iteration[20/23] Loss: 1.884, Acc: 1.000, Base Lr: 5.54e-04
+2023-09-05 03:51:25,036 TOPReID.train INFO: Epoch 101 done. Time per batch: 2.699[s] Speed: 47.4[samples/s]
+2023-09-05 03:52:02,491 TOPReID.train INFO: Validation Results - Epoch: 101
+2023-09-05 03:52:02,491 TOPReID.train INFO: mAP: 71.1%
+2023-09-05 03:52:02,492 TOPReID.train INFO: CMC curve, Rank-1  :73.4%
+2023-09-05 03:52:02,492 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 03:52:02,492 TOPReID.train INFO: CMC curve, Rank-10 :87.1%
+2023-09-05 03:52:02,492 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:52:02,492 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:52:02,492 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:52:02,492 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:52:51,035 TOPReID.train INFO: Epoch[102] Iteration[10/23] Loss: 1.894, Acc: 1.000, Base Lr: 4.99e-04
+2023-09-05 03:52:58,690 TOPReID.train INFO: Epoch[102] Iteration[20/23] Loss: 1.885, Acc: 1.000, Base Lr: 4.99e-04
+2023-09-05 03:53:03,921 TOPReID.train INFO: Epoch 102 done. Time per batch: 2.761[s] Speed: 46.4[samples/s]
+2023-09-05 03:53:39,473 TOPReID.train INFO: Validation Results - Epoch: 102
+2023-09-05 03:53:39,474 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 03:53:39,474 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 03:53:39,474 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 03:53:39,474 TOPReID.train INFO: CMC curve, Rank-10 :87.1%
+2023-09-05 03:53:39,474 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:53:39,474 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:53:39,474 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:53:39,474 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:54:30,702 TOPReID.train INFO: Epoch[103] Iteration[10/23] Loss: 1.870, Acc: 1.000, Base Lr: 4.47e-04
+2023-09-05 03:54:38,433 TOPReID.train INFO: Epoch[103] Iteration[20/23] Loss: 1.882, Acc: 1.000, Base Lr: 4.47e-04
+2023-09-05 03:54:44,130 TOPReID.train INFO: Epoch 103 done. Time per batch: 2.920[s] Speed: 43.8[samples/s]
+2023-09-05 03:55:21,083 TOPReID.train INFO: Validation Results - Epoch: 103
+2023-09-05 03:55:21,083 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 03:55:21,083 TOPReID.train INFO: CMC curve, Rank-1  :74.3%
+2023-09-05 03:55:21,083 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 03:55:21,083 TOPReID.train INFO: CMC curve, Rank-10 :87.1%
+2023-09-05 03:55:21,083 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:55:21,083 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:55:21,083 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:55:21,083 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:56:10,144 TOPReID.train INFO: Epoch[104] Iteration[10/23] Loss: 1.905, Acc: 1.000, Base Lr: 3.98e-04
+2023-09-05 03:56:17,828 TOPReID.train INFO: Epoch[104] Iteration[20/23] Loss: 1.887, Acc: 1.000, Base Lr: 3.98e-04
+2023-09-05 03:56:23,201 TOPReID.train INFO: Epoch 104 done. Time per batch: 2.773[s] Speed: 46.2[samples/s]
+2023-09-05 03:56:59,482 TOPReID.train INFO: Validation Results - Epoch: 104
+2023-09-05 03:56:59,483 TOPReID.train INFO: mAP: 71.3%
+2023-09-05 03:56:59,483 TOPReID.train INFO: CMC curve, Rank-1  :74.0%
+2023-09-05 03:56:59,483 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 03:56:59,483 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 03:56:59,483 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:56:59,483 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:56:59,483 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:56:59,483 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:57:46,846 TOPReID.train INFO: Epoch[105] Iteration[10/23] Loss: 1.891, Acc: 1.000, Base Lr: 3.51e-04
+2023-09-05 03:57:54,564 TOPReID.train INFO: Epoch[105] Iteration[20/23] Loss: 1.885, Acc: 1.000, Base Lr: 3.51e-04
+2023-09-05 03:57:59,851 TOPReID.train INFO: Epoch 105 done. Time per batch: 2.724[s] Speed: 47.0[samples/s]
+2023-09-05 03:58:37,230 TOPReID.train INFO: Validation Results - Epoch: 105
+2023-09-05 03:58:37,230 TOPReID.train INFO: mAP: 71.3%
+2023-09-05 03:58:37,230 TOPReID.train INFO: CMC curve, Rank-1  :74.0%
+2023-09-05 03:58:37,231 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 03:58:37,231 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 03:58:37,231 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 03:58:37,231 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 03:58:37,231 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 03:58:37,231 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 03:59:26,555 TOPReID.train INFO: Epoch[106] Iteration[10/23] Loss: 1.873, Acc: 1.000, Base Lr: 3.08e-04
+2023-09-05 03:59:34,285 TOPReID.train INFO: Epoch[106] Iteration[20/23] Loss: 1.875, Acc: 1.000, Base Lr: 3.08e-04
+2023-09-05 03:59:39,612 TOPReID.train INFO: Epoch 106 done. Time per batch: 2.816[s] Speed: 45.5[samples/s]
+2023-09-05 04:00:15,089 TOPReID.train INFO: Validation Results - Epoch: 106
+2023-09-05 04:00:15,090 TOPReID.train INFO: mAP: 71.3%
+2023-09-05 04:00:15,090 TOPReID.train INFO: CMC curve, Rank-1  :74.0%
+2023-09-05 04:00:15,090 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:00:15,090 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 04:00:15,090 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:00:15,090 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:00:15,090 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:00:15,090 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:01:00,662 TOPReID.train INFO: Epoch[107] Iteration[10/23] Loss: 1.899, Acc: 1.000, Base Lr: 2.67e-04
+2023-09-05 04:01:08,420 TOPReID.train INFO: Epoch[107] Iteration[20/23] Loss: 1.888, Acc: 1.000, Base Lr: 2.67e-04
+2023-09-05 04:01:13,717 TOPReID.train INFO: Epoch 107 done. Time per batch: 2.645[s] Speed: 48.4[samples/s]
+2023-09-05 04:01:50,984 TOPReID.train INFO: Validation Results - Epoch: 107
+2023-09-05 04:01:50,985 TOPReID.train INFO: mAP: 71.3%
+2023-09-05 04:01:50,985 TOPReID.train INFO: CMC curve, Rank-1  :74.2%
+2023-09-05 04:01:50,985 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:01:50,985 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 04:01:50,985 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:01:50,985 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:01:50,985 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:01:50,985 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:02:40,118 TOPReID.train INFO: Epoch[108] Iteration[10/23] Loss: 1.895, Acc: 1.000, Base Lr: 2.29e-04
+2023-09-05 04:02:48,014 TOPReID.train INFO: Epoch[108] Iteration[20/23] Loss: 1.889, Acc: 1.000, Base Lr: 2.29e-04
+2023-09-05 04:02:53,550 TOPReID.train INFO: Epoch 108 done. Time per batch: 2.788[s] Speed: 45.9[samples/s]
+2023-09-05 04:03:28,882 TOPReID.train INFO: Validation Results - Epoch: 108
+2023-09-05 04:03:28,882 TOPReID.train INFO: mAP: 71.3%
+2023-09-05 04:03:28,882 TOPReID.train INFO: CMC curve, Rank-1  :74.0%
+2023-09-05 04:03:28,883 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:03:28,883 TOPReID.train INFO: CMC curve, Rank-10 :87.3%
+2023-09-05 04:03:28,883 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:03:28,883 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:03:28,883 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:03:28,883 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:04:20,264 TOPReID.train INFO: Epoch[109] Iteration[10/23] Loss: 1.920, Acc: 1.000, Base Lr: 1.94e-04
+2023-09-05 04:04:28,013 TOPReID.train INFO: Epoch[109] Iteration[20/23] Loss: 1.901, Acc: 1.000, Base Lr: 1.94e-04
+2023-09-05 04:04:33,509 TOPReID.train INFO: Epoch 109 done. Time per batch: 2.916[s] Speed: 43.9[samples/s]
+2023-09-05 04:05:09,284 TOPReID.train INFO: Validation Results - Epoch: 109
+2023-09-05 04:05:09,285 TOPReID.train INFO: mAP: 71.3%
+2023-09-05 04:05:09,285 TOPReID.train INFO: CMC curve, Rank-1  :73.9%
+2023-09-05 04:05:09,285 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:05:09,285 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 04:05:09,285 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:05:09,285 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:05:09,286 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:05:09,286 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:05:56,874 TOPReID.train INFO: Epoch[110] Iteration[10/23] Loss: 1.876, Acc: 1.000, Base Lr: 1.62e-04
+2023-09-05 04:06:04,640 TOPReID.train INFO: Epoch[110] Iteration[20/23] Loss: 1.881, Acc: 1.000, Base Lr: 1.62e-04
+2023-09-05 04:06:10,167 TOPReID.train INFO: Epoch 110 done. Time per batch: 2.747[s] Speed: 46.6[samples/s]
+2023-09-05 04:06:46,568 TOPReID.train INFO: Validation Results - Epoch: 110
+2023-09-05 04:06:46,568 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 04:06:46,568 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 04:06:46,568 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:06:46,568 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 04:06:46,568 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:06:46,568 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:06:46,568 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:06:46,568 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:07:36,294 TOPReID.train INFO: Epoch[111] Iteration[10/23] Loss: 1.879, Acc: 1.000, Base Lr: 1.33e-04
+2023-09-05 04:07:44,029 TOPReID.train INFO: Epoch[111] Iteration[20/23] Loss: 1.883, Acc: 1.000, Base Lr: 1.33e-04
+2023-09-05 04:07:49,420 TOPReID.train INFO: Epoch 111 done. Time per batch: 2.833[s] Speed: 45.2[samples/s]
+2023-09-05 04:08:25,464 TOPReID.train INFO: Validation Results - Epoch: 111
+2023-09-05 04:08:25,465 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 04:08:25,465 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 04:08:25,465 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:08:25,465 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 04:08:25,465 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:08:25,465 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:08:25,465 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:08:25,465 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:09:11,949 TOPReID.train INFO: Epoch[112] Iteration[10/23] Loss: 1.898, Acc: 1.000, Base Lr: 1.07e-04
+2023-09-05 04:09:19,605 TOPReID.train INFO: Epoch[112] Iteration[20/23] Loss: 1.886, Acc: 1.000, Base Lr: 1.07e-04
+2023-09-05 04:09:25,112 TOPReID.train INFO: Epoch 112 done. Time per batch: 2.691[s] Speed: 47.6[samples/s]
+2023-09-05 04:10:01,334 TOPReID.train INFO: Validation Results - Epoch: 112
+2023-09-05 04:10:01,335 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 04:10:01,335 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 04:10:01,335 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:10:01,335 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 04:10:01,335 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:10:01,335 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:10:01,335 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:10:01,335 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:10:49,584 TOPReID.train INFO: Epoch[113] Iteration[10/23] Loss: 1.891, Acc: 1.000, Base Lr: 8.43e-05
+2023-09-05 04:10:57,316 TOPReID.train INFO: Epoch[113] Iteration[20/23] Loss: 1.886, Acc: 1.000, Base Lr: 8.43e-05
+2023-09-05 04:11:02,698 TOPReID.train INFO: Epoch 113 done. Time per batch: 2.699[s] Speed: 47.4[samples/s]
+2023-09-05 04:11:36,569 TOPReID.train INFO: Validation Results - Epoch: 113
+2023-09-05 04:11:36,569 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 04:11:36,569 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 04:11:36,570 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:11:36,570 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 04:11:36,570 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:11:36,570 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:11:36,570 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:11:36,570 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:12:25,478 TOPReID.train INFO: Epoch[114] Iteration[10/23] Loss: 1.880, Acc: 1.000, Base Lr: 6.43e-05
+2023-09-05 04:12:33,198 TOPReID.train INFO: Epoch[114] Iteration[20/23] Loss: 1.884, Acc: 1.000, Base Lr: 6.43e-05
+2023-09-05 04:12:38,501 TOPReID.train INFO: Epoch 114 done. Time per batch: 2.794[s] Speed: 45.8[samples/s]
+2023-09-05 04:13:13,701 TOPReID.train INFO: Validation Results - Epoch: 114
+2023-09-05 04:13:13,702 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 04:13:13,702 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 04:13:13,702 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:13:13,702 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 04:13:13,702 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:13:13,702 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:13:13,702 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:13:13,702 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:14:01,517 TOPReID.train INFO: Epoch[115] Iteration[10/23] Loss: 1.888, Acc: 1.000, Base Lr: 4.75e-05
+2023-09-05 04:14:09,201 TOPReID.train INFO: Epoch[115] Iteration[20/23] Loss: 1.882, Acc: 1.000, Base Lr: 4.75e-05
+2023-09-05 04:14:14,577 TOPReID.train INFO: Epoch 115 done. Time per batch: 2.748[s] Speed: 46.6[samples/s]
+2023-09-05 04:14:50,793 TOPReID.train INFO: Validation Results - Epoch: 115
+2023-09-05 04:14:50,793 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 04:14:50,793 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 04:14:50,794 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:14:50,794 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 04:14:50,794 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:14:50,794 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:14:50,794 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:14:50,794 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:15:41,980 TOPReID.train INFO: Epoch[116] Iteration[10/23] Loss: 1.886, Acc: 1.000, Base Lr: 3.36e-05
+2023-09-05 04:15:49,652 TOPReID.train INFO: Epoch[116] Iteration[20/23] Loss: 1.885, Acc: 1.000, Base Lr: 3.36e-05
+2023-09-05 04:15:54,889 TOPReID.train INFO: Epoch 116 done. Time per batch: 2.834[s] Speed: 45.2[samples/s]
+2023-09-05 04:16:29,109 TOPReID.train INFO: Validation Results - Epoch: 116
+2023-09-05 04:16:29,110 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 04:16:29,110 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 04:16:29,110 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:16:29,110 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 04:16:29,111 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:16:29,111 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:16:29,111 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:16:29,111 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:17:14,886 TOPReID.train INFO: Epoch[117] Iteration[10/23] Loss: 1.883, Acc: 1.000, Base Lr: 2.29e-05
+2023-09-05 04:17:22,538 TOPReID.train INFO: Epoch[117] Iteration[20/23] Loss: 1.887, Acc: 1.000, Base Lr: 2.29e-05
+2023-09-05 04:17:27,895 TOPReID.train INFO: Epoch 117 done. Time per batch: 2.606[s] Speed: 49.1[samples/s]
+2023-09-05 04:18:02,403 TOPReID.train INFO: Validation Results - Epoch: 117
+2023-09-05 04:18:02,403 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 04:18:02,403 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 04:18:02,403 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:18:02,403 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 04:18:02,403 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:18:02,403 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:18:02,403 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:18:02,403 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:18:50,915 TOPReID.train INFO: Epoch[118] Iteration[10/23] Loss: 1.885, Acc: 1.000, Base Lr: 1.52e-05
+2023-09-05 04:18:58,563 TOPReID.train INFO: Epoch[118] Iteration[20/23] Loss: 1.887, Acc: 1.000, Base Lr: 1.52e-05
+2023-09-05 04:19:03,948 TOPReID.train INFO: Epoch 118 done. Time per batch: 2.759[s] Speed: 46.4[samples/s]
+2023-09-05 04:19:38,603 TOPReID.train INFO: Validation Results - Epoch: 118
+2023-09-05 04:19:38,603 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 04:19:38,603 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 04:19:38,604 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:19:38,604 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 04:19:38,604 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:19:38,604 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:19:38,604 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:19:38,604 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:20:26,649 TOPReID.train INFO: Epoch[119] Iteration[10/23] Loss: 1.880, Acc: 1.000, Base Lr: 1.05e-05
+2023-09-05 04:20:34,298 TOPReID.train INFO: Epoch[119] Iteration[20/23] Loss: 1.881, Acc: 1.000, Base Lr: 1.05e-05
+2023-09-05 04:20:39,791 TOPReID.train INFO: Epoch 119 done. Time per batch: 2.762[s] Speed: 46.4[samples/s]
+2023-09-05 04:21:15,775 TOPReID.train INFO: Validation Results - Epoch: 119
+2023-09-05 04:21:15,776 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 04:21:15,776 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 04:21:15,776 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:21:15,776 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 04:21:15,776 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:21:15,776 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:21:15,776 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:21:15,776 TOPReID.train INFO: Best Rank-10: 89.4%
+2023-09-05 04:22:02,992 TOPReID.train INFO: Epoch[120] Iteration[10/23] Loss: 1.884, Acc: 1.000, Base Lr: 9.00e-06
+2023-09-05 04:22:10,649 TOPReID.train INFO: Epoch[120] Iteration[20/23] Loss: 1.876, Acc: 1.000, Base Lr: 9.00e-06
+2023-09-05 04:22:15,931 TOPReID.train INFO: Epoch 120 done. Time per batch: 2.716[s] Speed: 47.1[samples/s]
+2023-09-05 04:22:53,985 TOPReID.train INFO: Validation Results - Epoch: 120
+2023-09-05 04:22:53,985 TOPReID.train INFO: mAP: 71.2%
+2023-09-05 04:22:53,985 TOPReID.train INFO: CMC curve, Rank-1  :73.8%
+2023-09-05 04:22:53,985 TOPReID.train INFO: CMC curve, Rank-5  :83.9%
+2023-09-05 04:22:53,985 TOPReID.train INFO: CMC curve, Rank-10 :87.2%
+2023-09-05 04:22:53,985 TOPReID.train INFO: Best mAP: 72.3%
+2023-09-05 04:22:53,985 TOPReID.train INFO: Best Rank-1: 76.6%
+2023-09-05 04:22:53,985 TOPReID.train INFO: Best Rank-5: 84.7%
+2023-09-05 04:22:53,985 TOPReID.train INFO: Best Rank-10: 89.4%
