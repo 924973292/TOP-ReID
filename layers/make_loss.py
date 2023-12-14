@@ -37,13 +37,6 @@ def make_loss(cfg, num_classes):  # modified by gu
         def loss_func(score, feat, target, target_cam):
             if cfg.MODEL.METRIC_LOSS_TYPE == 'triplet':
                 if cfg.MODEL.IF_LABELSMOOTH == 'on':
-                    if cfg.MODEL.CNN_TYPE == 'pcb':
-                        ID_LOSS = 0
-                        for i in range(len(score)):
-                            ID_LOSS = ID_LOSS + xent(score[i], target)
-                        TRI_LOSS = triplet(feat, target)[0]
-                        return cfg.MODEL.ID_LOSS_WEIGHT * ID_LOSS + \
-                            cfg.MODEL.TRIPLET_LOSS_WEIGHT * TRI_LOSS
                     if isinstance(score, list):
                         ID_LOSS = [xent(scor, target) for scor in score[1:]]
                         ID_LOSS = sum(ID_LOSS) / len(ID_LOSS)

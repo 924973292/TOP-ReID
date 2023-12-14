@@ -52,10 +52,8 @@ class build_transformer(nn.Module):
             camera_num = camera_num
         else:
             camera_num = 0
-        if cfg.MODEL.SIE_VIEW:
-            view_num = view_num
-        else:
-            view_num = 0
+        # No view
+        view_num = 0
 
         self.base = factory[cfg.MODEL.TRANSFORMER_TYPE](img_size=cfg.INPUT.SIZE_TRAIN, sie_xishu=cfg.MODEL.SIE_COE,
                                                         num_classes=num_classes,
@@ -71,7 +69,6 @@ class build_transformer(nn.Module):
 
         self.num_classes = num_classes
         self.ID_LOSS_TYPE = cfg.MODEL.ID_LOSS_TYPE
-        self.mode = 1
 
         self.classifier = nn.Linear(self.in_planes, self.num_classes, bias=False)
         self.classifier.apply(weights_init_classifier)
@@ -80,7 +77,7 @@ class build_transformer(nn.Module):
         self.bottleneck.bias.requires_grad_(False)
         self.bottleneck.apply(weights_init_kaiming)
 
-    def forward(self, x, label=None, cam_label=0, view_label=None):
+    def forward(self, x, label=None, cam_label=None, view_label=None):
         cash_x = self.base(x, cam_label=cam_label, view_label=view_label)
         global_feat = cash_x[-1][:, 0]
         feat = self.bottleneck(global_feat)
@@ -90,21 +87,12 @@ class build_transformer(nn.Module):
                 cls_score = self.classifier(feat, label)
             else:
                 cls_score = self.classifier(feat)
-            if self.mode == 0:
-                return cls_score, global_feat
-            else:
-                return cash_x, cls_score, global_feat  # global feature for triplet loss
+            return cash_x, cls_score, global_feat  # global feature for triplet loss
         else:
             if self.neck_feat == 'after':
-                if self.mode == 0:
-                    return feat
-                else:
-                    return cash_x, feat
+                return cash_x, feat
             else:
-                if self.mode == 0:
-                    return global_feat
-                else:
-                    return cash_x, global_feat
+                return cash_x, global_feat
 
     def load_param(self, trained_path):
         param_dict = torch.load(trained_path)

@@ -88,11 +88,6 @@ def do_train(cfg,
                     for i in range(0, index, 2):
                         loss_tmp = loss_fn(score=output[i], feat=output[i + 1], target=target, target_cam=target_cam)
                         loss = loss + loss_tmp
-                if cfg.MODEL.MARGIN:
-                    print("MARGIN HERE!!!")
-                    loss_id_cons = multiModalMarginLossNew(margin=1)
-                    loss_id = loss_id_cons(output[1], output[3], output[5], target)
-                    loss = loss + 0.001 * loss_id
             scaler.scale(loss).backward()
             scaler.step(optimizer)
             scaler.update()
@@ -105,10 +100,7 @@ def do_train(cfg,
             if isinstance(output, list):
                 acc = (output[0][0].max(1)[1] == target).float().mean()
             else:
-                if cfg.MODEL.CNN_TYPE == 'pcb':
-                    acc = (output[0][0].max(1)[1] == target).float().mean()
-                else:
-                    acc = (output[0].max(1)[1] == target).float().mean()
+                acc = (output[0].max(1)[1] == target).float().mean()
 
             loss_meter.update(loss.item(), img['RGB'].shape[0])
             acc_meter.update(acc, 1)
