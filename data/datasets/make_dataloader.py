@@ -161,7 +161,7 @@ def train_collate_fn(batch):
     NI = torch.stack(NI_list, dim=0)
     TI = torch.stack(TI_list, dim=0)
     imgs = {'RGB': RGB, "NI": NI, "TI": TI}
-    return imgs, pids, camids, viewids,
+    return imgs, pids, camids, viewids,_
 
 
 def val_collate_fn(batch):

@@ -6,9 +6,9 @@ MODEL:
   SIE_CAMERA: True
   RE: 1
   RE_LAYER: 1
-  DIRECT: 0
+  DIRECT: 0 # We find that for vehicle reid, indirect is better than direct
 INPUT:
-  SIZE_TRAIN: [ 256, 128 ]
+  SIZE_TRAIN: [ 256, 128 ] # For VehicleID, you can also use [128,256], we simply use the same setting as Person-ReID
   SIZE_TEST: [ 256, 128 ]
   PROB: 0.5 # random horizontal flip
   RE_PROB: 0.5 # random erasing

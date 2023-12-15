@@ -65,7 +65,7 @@ def do_train(cfg,
         evaluator.reset()
         scheduler.step(epoch)
         model.train()
-        for n_iter, (img, vid, target_cam, target_view) in enumerate(train_loader):
+        for n_iter, (img, vid, target_cam, target_view,_) in enumerate(train_loader):
             optimizer.zero_grad()
             optimizer_center.zero_grad()
             img = {'RGB': img['RGB'].to(device),

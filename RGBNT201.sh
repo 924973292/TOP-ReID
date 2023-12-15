@@ -1,3 +1,5 @@
 #!/bin/bash
-source activate (your env)
-python train_net.py --config_file /15127306268/wyh/MM/configs/RGBNT201/vit_top_re.yml
+source activate base
+cd /13994058190/WYH/TOP-ReID
+pip install timm
+python train_net.py --config_file /13994058190/WYH/TOP-ReID/configs/RGBNT201/TOP-ReID.yml
