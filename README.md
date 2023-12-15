@@ -37,14 +37,14 @@ Multi-spectral object ReID is crucial in scenarios where objects are captured th
 
 ### Missing-spectral Object ReID
 #### Missing-spectral Person ReID [RGBNT201]
-<img src="/Results/Missing_person.png" alt="Missing-spectral Person ReID" width="888px">  
+<img src="/Results/Missing_Person.png" alt="Missing-spectral Person ReID" width="888px">  
 
 #### Missing-spectral Vehicle ReID [RGBNT100]
 <img src="/Results/Missing_Vehicle.png" alt="Missing-spectral Vehicle ReID" width="888px">  
 
 ### Performance comparison with different modules [RGBNT201、RGBNT100]
 <img src="/Results/ablation201.png" alt="Performance comparison with different modules" width="888px">
-<img src="/Results/ab100.png" alt="Performance comparison with different modules" width="888px">  
+<img src="/Results/ablation100.png" alt="Performance comparison with different modules" width="888px">  
 
 ### Performance comparison of different backbones [RGBNT201]
 <img src="/Results/backbones.png" alt="Performance comparison of different backbones" width="888px">

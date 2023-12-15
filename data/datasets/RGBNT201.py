@@ -1,8 +1,6 @@
 from __future__ import division, print_function, absolute_import
 import glob
-import os.path as osp
 import warnings
-
 import os.path as osp
 from .bases import BaseImageDataset
 
@@ -84,6 +82,6 @@ class RGBNT201(BaseImageDataset):
             camid -= 1  # index starts from 0
             if relabel:
                 pid = pid2label[pid]
-            data.append((img, pid, camid,trackid))
+            data.append((img, pid, camid, trackid))
             # print("11111")
         return data

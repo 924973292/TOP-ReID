@@ -10,8 +10,7 @@ import re
 import os.path as osp
 
 from .bases import BaseImageDataset
-from collections import defaultdict
-import pickle
+
 class Market1501(BaseImageDataset):
     """
     Market1501

@@ -1,6 +1,6 @@
 MODEL:
   PRETRAIN_CHOICE: 'imagenet'
-  PRETRAIN_PATH_T: '/15127306268/wyh/UIS/pth/vitb_16_224_21k.pth'
+  PRETRAIN_PATH_T: '/path/to/your/vitb_16_224_21k.pth'
   TRANSFORMER_TYPE: 'vit_base_patch16_224'
   STRIDE_SIZE: [ 16, 16 ]
   SIE_CAMERA: True
@@ -18,11 +18,11 @@ DATALOADER:
 
 DATASETS:
   NAMES: ('MSVR310')
-  ROOT_DIR: '/15127306268/wyh/MM/data/'
+  ROOT_DIR: '/path/to/your/data/'
 
 SOLVER:
-  MAX_EPOCHS: 1000
-  BASE_LR: 0.001
+  MAX_EPOCHS: 1000 # Here we follow the setting CCNet
+  BASE_LR: 0.001   # Here we use a smaller learning rate
   WARMUP_ITERS: 100
 
 TEST:
@@ -30,7 +30,7 @@ TEST:
   WEIGHT: ''
   NECK_FEAT: 'before'
   FEAT_NORM: 'yes'
-  MISS: 'None'
+  MISS: 'nothing'
 
 OUTPUT_DIR: './MSVR310/TOP-ReID'
 

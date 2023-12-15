@@ -4,22 +4,9 @@ import time
 import torch
 import torch.nn as nn
 from utils.meter import AverageMeter
-from utils.metrics import R1_mAP_eval, Cross_R1_mAP_eval, R1_mAP
+from utils.metrics import R1_mAP_eval, R1_mAP
 from torch.cuda import amp
 import torch.distributed as dist
-from layers.mutilmargin import multiModalMarginLossNew
-
-
-
-def normalize(x, axis=-1):
-    """Normalizing to unit length along the specified dimension.
-    Args:
-      x: pytorch Variable
-    Returns:
-      x: pytorch Variable, same shape as input
-    """
-    x = 1. * x / (torch.norm(x, 2, axis, keepdim=True).expand_as(x) + 1e-12)
-    return x
 
 
 def do_train(cfg,
@@ -65,7 +52,7 @@ def do_train(cfg,
         evaluator.reset()
         scheduler.step(epoch)
         model.train()
-        for n_iter, (img, vid, target_cam, target_view,_) in enumerate(train_loader):
+        for n_iter, (img, vid, target_cam, target_view, _) in enumerate(train_loader):
             optimizer.zero_grad()
             optimizer_center.zero_grad()
             img = {'RGB': img['RGB'].to(device),
@@ -142,7 +129,7 @@ def do_train(cfg,
                             target_view = target_view.to(device)
                             feat = model(img, cam_label=camids, view_label=target_view)
                             if cfg.DATASETS.NAMES == "MSVR310":
-                                evaluator.update((feat, vid, camid, target_view,_))
+                                evaluator.update((feat, vid, camid, target_view, _))
                             else:
                                 evaluator.update((feat, vid, camid))
                     cmc, mAP, _, _, _, _, _ = evaluator.compute()
@@ -163,7 +150,7 @@ def do_train(cfg,
                         target_view = target_view.to(device)
                         feat = model(img, cam_label=camids, view_label=target_view)
                         if cfg.DATASETS.NAMES == "MSVR310":
-                            evaluator.update((feat, vid, camid, scenceids,_))
+                            evaluator.update((feat, vid, camid, scenceids, _))
                         else:
                             evaluator.update((feat, vid, camid))
                 cmc, mAP, _, _, _, _, _ = evaluator.compute()
@@ -193,7 +180,6 @@ def do_inference(cfg,
     logger = logging.getLogger("TOPReID.test")
     logger.info("Enter inferencing")
 
-
     if cfg.DATASETS.NAMES == "MSVR310":
         evaluator = R1_mAP(num_query, max_rank=50, feat_norm=cfg.TEST.FEAT_NORM)
         evaluator.reset()
@@ -218,7 +204,7 @@ def do_inference(cfg,
             target_view = target_view.to(device)
             feat = model(img, cam_label=camids, view_label=target_view)
             if cfg.DATASETS.NAMES == "MSVR310":
-                evaluator.update((feat, pid, camid, scenceids,imgpath))
+                evaluator.update((feat, pid, camid, scenceids, imgpath))
             else:
                 evaluator.update((feat, pid, camid))
             img_path_list.extend(imgpath)

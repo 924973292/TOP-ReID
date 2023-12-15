@@ -6,9 +6,7 @@
 
 import glob
 import re
-import pdb
 import os.path as osp
-import numpy as np
 from .bases import BaseImageDataset
 
 

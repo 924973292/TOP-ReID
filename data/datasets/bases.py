@@ -9,7 +9,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 def read_image(img_list):
     """Keep reading image until succeed.
     This can avoid IOError incurred by heavy IO process."""
-    if type(img_list) ==type("This is a str"):
+    if type(img_list) == type("This is a str"):
         img_path = img_list
         got_img = False
         if not osp.exists(img_path):

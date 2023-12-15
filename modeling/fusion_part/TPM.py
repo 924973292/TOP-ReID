@@ -4,6 +4,7 @@ from ..backbones.vit_pytorch import DropPath
 from ..backbones.vit_pytorch import Mlp
 from ..backbones.vit_pytorch import trunc_normal_
 
+
 class CrossAttention(nn.Module):
     def __init__(self, dim, num_heads=12, qkv_bias=False, qk_scale=None, attn_drop=0., proj_drop=0.):
         super().__init__()
@@ -56,8 +57,7 @@ class RotationAttention(nn.Module):
 
 class BlockRotation(nn.Module):
 
-    def __init__(self, dim, num_heads, mlp_ratio=4., qkv_bias=False, qk_scale=None, drop=0., attn_drop=0.,
-                 drop_path=0., act_layer=nn.GELU, norm_layer=nn.LayerNorm, mode=0):
+    def __init__(self, dim, num_heads, mode=0):
         super().__init__()
         self.Rotation = RotationAttention(dim, num_heads, mlp_ratio=4., qkv_bias=False, qk_scale=None, drop=0.,
                                           attn_drop=0.,
@@ -82,14 +82,14 @@ class BlockRotation(nn.Module):
 
 
 class TPM(nn.Module):
-    def __init__(self, dim, num_heads, mlp_ratio=4., qkv_bias=False, qk_scale=None, drop=0., attn_drop=0.,
-                 drop_path=0., act_layer=nn.GELU, norm_layer=nn.LayerNorm):
+    def __init__(self, dim, num_heads):
         super().__init__()
         self.Ro_start = BlockRotation(dim, num_heads)
         self.Ro_middle = BlockRotation(dim, num_heads)
         self.Ro_end = BlockRotation(dim, num_heads, mode=1)
         self.apply(self._init_weights)
         print("TPM HERE!!!")
+
     def _init_weights(self, m):
         if isinstance(m, nn.Linear):
             trunc_normal_(m.weight, std=.02)

@@ -14,7 +14,7 @@ _C.MODEL.NAME = 'TOPReID'
 # The layer where we extract feature from the ViT backbone
 _C.MODEL.LAYER = -1
 # Path to pretrained model of backbone
-_C.MODEL.PRETRAIN_PATH_T = '/15127306268/wyh/UIS/pth/vitb_16_224_21k.pth'
+_C.MODEL.PRETRAIN_PATH_T = '/path/to/your/vitb_16_224_21k.pth'
 # Use ImageNet pretrained model to initialize backbone or use self trained model to initialize the whole model
 # Options: 'imagenet' or 'self'
 _C.MODEL.PRETRAIN_CHOICE = 'imagenet'
@@ -39,7 +39,7 @@ _C.MODEL.IF_LABELSMOOTH = 'on'
 # If train with the contact feature
 _C.MODEL.DIRECT = 1
 # The depth of the CRM
-_C.MODEL.RE_LAYER = 0
+_C.MODEL.RE_LAYER = 1
 
 # Transformer setting
 _C.MODEL.DROP_PATH = 0.1
@@ -51,7 +51,7 @@ _C.MODEL.STRIDE_SIZE = [16, 16]
 # SIE Parameter
 _C.MODEL.SIE_COE = 3.0
 _C.MODEL.SIE_CAMERA = True
-_C.MODEL.SIE_VIEW = False
+_C.MODEL.SIE_VIEW = False # We do not use this parameter
 
 # -----------------------------------------------------------------------------
 # INPUT
@@ -101,7 +101,7 @@ _C.SOLVER.OPTIMIZER_NAME = "SGD"
 # Number of max epoches
 _C.SOLVER.MAX_EPOCHS = 120
 # Base learning rate
-_C.SOLVER.BASE_LR = 0.008
+_C.SOLVER.BASE_LR = 0.009
 # Factor of learning bias
 _C.SOLVER.LARGE_FC_LR = False
 _C.SOLVER.BIAS_LR_FACTOR = 2
