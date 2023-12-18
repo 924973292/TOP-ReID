@@ -5,7 +5,7 @@
 **TOP-ReID** is a powerful multi-spectral object Re-identification (ReID) framework designed to retrieve specific objects by leveraging complementary information from different image spectra. It overcomes the limitations of traditional single-spectral ReID in complex visual environments by reducing distribution gap and enhancing cyclic feature aggregation among different image spectra. Besides, TOP-ReID achieves advanced performance in multi-spectral and missing-spectral object ReID and holds great potential under cross-spectral settings.
 
 ## News
-Exciting news! Our paper has been accepted by the AAAI 2024! 🎉
+Exciting news! Our paper has been accepted by the AAAI 2024! 🎉 [Paper](<https://arxiv.org/abs/2312.09612>)
 
 ## Table of Contents
 
@@ -56,7 +56,7 @@ Multi-spectral object ReID is crucial in scenarios where objects are captured th
 ### Grad-CAM [RGBNT201、RGBNT100]
 <img src="/Results/grad-cam.png" alt="Grad-CAM" width="888px">
 
-#### Please check the paper for detailed information
+#### Please check the paper for detailed information [Paper](<https://arxiv.org/abs/2312.09612>)
 
 ## Reproduction
 ### Datasets
