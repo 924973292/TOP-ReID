@@ -86,11 +86,11 @@ _C.DATASETS.ROOT_DIR = ('./data')
 # -----------------------------------------------------------------------------
 _C.DATALOADER = CN()
 # Number of data loading threads
-_C.DATALOADER.NUM_WORKERS = 10
+_C.DATALOADER.NUM_WORKERS = 14 # This may be affected by the order of data reading
 # Sampler for data loading
 _C.DATALOADER.SAMPLER = 'softmax_triplet'
 # Number of instance for one batch
-_C.DATALOADER.NUM_INSTANCE = 16
+_C.DATALOADER.NUM_INSTANCE = 16 # You can adjust it to 8 to save memory while the batch_size need to be 64 to ensure the number of ID
 
 # ---------------------------------------------------------------------------- #
 # Solver
@@ -148,7 +148,7 @@ _C.SOLVER.EVAL_PERIOD = 1
 # Number of images per batch
 # This is global, so if we have 8 GPUs and IMS_PER_BATCH = 16, each GPU will
 # see 2 images per batch
-_C.SOLVER.IMS_PER_BATCH = 128
+_C.SOLVER.IMS_PER_BATCH = 128 # You can adjust it to 64
 
 # ---------------------------------------------------------------------------- #
 # TEST
