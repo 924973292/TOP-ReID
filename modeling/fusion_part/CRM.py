@@ -63,9 +63,9 @@ class CRM(nn.Module):
         self.RGBRE = Reconstruct(dim, num_heads, depth=depth)
         self.NIRE = Reconstruct(dim, num_heads, depth=depth)
         self.TIRE = Reconstruct(dim, num_heads, depth=depth)
+        # self.apply(self._init_weights)  change to random
         print("CRM HERE!!!")
         self.miss = miss
-        self.apply(self._init_weights)
 
     def _init_weights(self, m):
         if isinstance(m, nn.Linear):
