@@ -87,7 +87,7 @@ class TPM(nn.Module):
         self.Ro_start = BlockRotation(dim, num_heads)
         self.Ro_middle = BlockRotation(dim, num_heads)
         self.Ro_end = BlockRotation(dim, num_heads, mode=1)
-        self.apply(self._init_weights)
+        # self.apply(self._init_weights)  change to random
         print("TPM HERE!!!")
 
     def _init_weights(self, m):
