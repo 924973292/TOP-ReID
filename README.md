@@ -94,6 +94,9 @@ In order to facilitate users in reproducing the results, we have provided traini
 ### Tips
 If your machine's GPU memory is insufficient, consider adjusting the batch size accordingly. However, be aware that this may potentially impact the results. Moreover, based on our experimental findings, utilizing a single Transformer as the backbone network produces comparable results (mAP: 71.7%, Rank-1: 76.7%) on RGBNT201. To reduce GPU memory usage, you can opt to utilize only one Transformer backbone to process data from all three modalities. This modification requires adjusting the model initialization definition.
 
+## Star
+<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="https://star-history.com/embed?secret=Z2hwX3NTZllLTmkxalByUXo0cG1FQUh1TXhFRjhPVXVIMTJQVGhCSQ==#924973292/TOP-ReID&Date" frameBorder="0"></iframe>
+
 ## Citation
 If you find TOP-ReID useful in your research, please consider citing:
 ```bibtex
