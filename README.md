@@ -96,7 +96,7 @@ If your machine's GPU memory is insufficient, consider adjusting the batch size 
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=924973292/TOP-ReID&type=Date)](https://star-history.com/#924973292/TOP-ReID&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=924973292/TOP-ReID&type=Timeline)](https://star-history.com/#924973292/TOP-ReID&Timeline)
 
 
 ## Citation
