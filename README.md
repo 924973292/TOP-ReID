@@ -1,4 +1,21 @@
-# TOP-ReID: Multi-spectral Object Re-Identification with Token Permutation
+<p align="center">
+
+  <h1 align="center">TOP-ReID: Multi-spectral Object Re-Identification with Token Permutation</h1>
+  <p align="center">
+    <a href="https://scholar.google.com/citations?user=WZvjVLkAAAAJ&hl=zh-CN" rel="external nofollow noopener" target="_blank"><strong>Yuhao Wang</strong></a>
+    ·
+    <a href="[https://dblp.org/pid/51/3710-66.html](https://scholar.google.com/citations?user=6R4C_6wAAAAJ&hl=zh-CN&oi=ao)" rel="external nofollow noopener" target="_blank"><strong>Xuehu Liu</strong></a>
+    ·
+   <a href="https://scholar.google.com/citations?user=MfbIbuEAAAAJ&hl=zh-CN" rel="external nofollow noopener" target="_blank"><strong>Pingping Zhang*</strong></a>
+    ·
+   <a href="https://cs.ujs.edu.cn/info/1518/23957.htm"  rel="external nofollow noopener" target="_blank"><strong>Hu Lu</strong></a>
+    ·
+    <a href="https://dblp.org/pid/138/5016.html" rel="external nofollow noopener" target="_blank"><strong>Zhengzheng Tu</strong></a>
+    ·
+    <a href="https://scholar.google.com/citations?hl=zh-CN&user=D3nE0agAAAAJ" rel="external nofollow noopener" target="_blank"><strong>Huchuan Lu</strong></a>
+  </p>
+<p align="center">
+    <a href="https://arxiv.org/abs/2312.09612" rel="external nofollow noopener" target="_blank">CVPR 2024 Paper</a>
 
 ![TOP-ReID](TOPReID.png)
 
