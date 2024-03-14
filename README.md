@@ -4,7 +4,7 @@
   <p align="center">
     <a href="https://scholar.google.com/citations?user=WZvjVLkAAAAJ&hl=zh-CN" rel="external nofollow noopener" target="_blank"><strong>Yuhao Wang</strong></a>
     ·
-    <a href="[https://dblp.org/pid/51/3710-66.html](https://scholar.google.com/citations?user=6R4C_6wAAAAJ&hl=zh-CN&oi=ao)" rel="external nofollow noopener" target="_blank"><strong>Xuehu Liu</strong></a>
+    <a href="https://dblp.org/pid/51/3710-66.html](https://scholar.google.com/citations?user=6R4C_6wAAAAJ&hl=zh-CN&oi=ao)" rel="external nofollow noopener" target="_blank"><strong>Xuehu Liu</strong></a>
     ·
    <a href="https://scholar.google.com/citations?user=MfbIbuEAAAAJ&hl=zh-CN" rel="external nofollow noopener" target="_blank"><strong>Pingping Zhang*</strong></a>
     ·
