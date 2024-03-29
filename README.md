@@ -121,9 +121,12 @@ If your machine's GPU memory is insufficient, consider adjusting the batch size 
 ## Citation
 If you find TOP-ReID useful in your research, please consider citing:
 ```bibtex
-@article{wang2023top,
+@inproceedings{wang2024top,
   title={TOP-ReID: Multi-spectral Object Re-Identification with Token Permutation},
   author={Wang, Yuhao and Liu, Xuehu and Zhang, Pingping and Lu, Hu and Tu, Zhengzheng and Lu, Huchuan},
-  journal={arXiv preprint arXiv:2312.09612},
-  year={2023}
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={38},
+  number={6},
+  pages={5758--5766},
+  year={2024}
 }
