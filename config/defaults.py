@@ -86,11 +86,16 @@ _C.DATASETS.ROOT_DIR = ('./data')
 # -----------------------------------------------------------------------------
 _C.DATALOADER = CN()
 # Number of data loading threads
-_C.DATALOADER.NUM_WORKERS = 14 # This may be affected by the order of data reading
+_C.DATALOADER.NUM_WORKERS = 14 # This may be affected by the order of data reading，you can change it to 8.
 # Sampler for data loading
 _C.DATALOADER.SAMPLER = 'softmax_triplet'
 # Number of instance for one batch
 _C.DATALOADER.NUM_INSTANCE = 16 # You can adjust it to 8 to save memory while the batch_size need to be 64 to ensure the number of ID
+
+# The typical combination is:
+# batch size 128, number of instances 16/8/4
+# batch size 64, number of instances 8/4
+# batch size 32, number of instances 8/4
 
 # ---------------------------------------------------------------------------- #
 # Solver
