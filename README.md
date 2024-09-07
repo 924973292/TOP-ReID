@@ -82,7 +82,7 @@ Multi-spectral object ReID is crucial in scenarios where objects are captured th
 ### Datasets
 RGBNT201    link: https://drive.google.com/drive/folders/1EscBadX-wMAT56_It5lXY-S3-b5nK1wH  
 RGBNT100    link: https://pan.baidu.com/s/1xqqh7N4Lctm3RcUdskG0Ug  code：rjin  
-MSVR310     link: https://pan.baidu.com/share/init?surl=67TY9fCz5ZjtDdsOIovX1w&pwd=msvr  code: msvr
+MSVR310     link: https://drive.google.com/file/d/1IxI-fGiluPO_Ies6YjDHeTEuVYhFdYwD/view?usp=drive_link
 ### Pretrained
 ViT-B    link: https://pan.baidu.com/s/1YE-24vSo5pv_wHOF-y4sfA  
 DeiT-S      link: https://pan.baidu.com/s/1YE-24vSo5pv_wHOF-y4sfA  
